@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Thailand Honeymoon 2027</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: one reading column; route strip; each day is a card holding an hourly timeline; tables scroll in their own boxes */
+:root{
+  --bg:#f6f8f7; --surface:#ffffff; --fg:#14211f; --muted:#5b6b68; --line:#dbe3e1;
+  --accent:#0f7c74; --accent-soft:#e2f2ef; --sand:#9a6a1f; --sand-soft:#f6ecdb; --warn:#a4452c; --warn-soft:#f8e6df;
+  --night:#3d4a7a; --night-soft:#e8eaf5;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1716; --surface:#152220; --fg:#e4eeec; --muted:#97aaa6; --line:#26403c;
+  --accent:#4cc3b6; --accent-soft:#16332f; --sand:#e0b46a; --sand-soft:#2e2617; --warn:#ef9a7f; --warn-soft:#3a1f17;
+  --night:#a9b4ec; --night-soft:#1c2140; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1716; --surface:#152220; --fg:#e4eeec; --muted:#97aaa6; --line:#26403c;
+  --accent:#4cc3b6; --accent-soft:#16332f; --sand:#e0b46a; --sand-soft:#2e2617; --warn:#ef9a7f; --warn-soft:#3a1f17;
+  --night:#a9b4ec; --night-soft:#1c2140; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15.5px;line-height:1.6}
+.wrap{max-width:880px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,3.1rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.6rem;font-weight:700;margin-bottom:14px}
+h3{font-size:1.12rem;font-weight:700}
+p{margin:0}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.eyebrow{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+section{display:flex;flex-direction:column;gap:14px;min-width:0}
+.intro{max-width:64ch}
+
+header{display:flex;flex-direction:column;gap:14px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:6px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.fact b{display:block;font-family:var(--display);font-size:1.15rem;font-variant-numeric:tabular-nums}
+.fact span{font-size:.8rem;color:var(--muted)}
+
+.route{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px}
+.stop{flex:1 1 120px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.stop.stay{background:var(--accent-soft);border-color:transparent}
+.stop small{display:block;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
+.stop strong{font-family:var(--display);font-size:1.05rem}
+.stop em{font-style:normal;display:block;font-size:.85rem;color:var(--muted)}
+.arrow{align-self:center;color:var(--muted);font-size:1.1rem}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.82rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+
+/* days */
+.leg{display:flex;flex-direction:column;gap:12px}
+.leg-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--accent);padding-bottom:6px;margin-top:10px}
+.leg-head h3{font-size:1.3rem}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.day-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.day-top h3 span{color:var(--muted);font-weight:500;font-size:.95rem;margin-left:6px}
+.sleepchip{font-size:.78rem;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--night-soft);color:var(--night);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sched{display:flex;flex-direction:column}
+.r{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:7px 0 7px 10px;border-left:3px solid var(--line)}
+.r + .r{border-top:1px solid var(--line)}
+.r time{font-variant-numeric:tabular-nums;font-weight:600;font-size:.88rem;white-space:nowrap}
+.r div{min-width:0}
+.r .d{display:block;font-size:.86rem;color:var(--muted)}
+.r.eat{border-left-color:var(--sand)}
+.r.go{border-left-color:var(--muted)}
+.r.see{border-left-color:var(--accent)}
+.r.free{border-left-color:#7fb8a6}
+.r.sleep{border-left-color:var(--night);background:var(--night-soft)}
+.r.sleep time,.r.sleep b{color:var(--night)}
+.ph{font-size:.8rem;font-weight:600;white-space:nowrap;margin-left:4px}
+@media (max-width:520px){.r{grid-template-columns:1fr;gap:0}}
+.tag{display:inline-block;font-size:.72rem;font-weight:600;padding:1px 7px;border-radius:99px;background:var(--sand-soft);color:var(--sand);margin-left:4px;vertical-align:1px}
+.flag{font-size:.86rem;background:var(--warn-soft);border-radius:8px;padding:8px 12px}
+.flag b{color:var(--warn)}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:.92rem}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:700;background:var(--accent-soft)}
+td s{color:var(--muted)}
+
+.hotels{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.hotel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.hotel .city{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.hotel .price{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600}
+.hotel .alt{font-size:.86rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:6px;margin-top:2px}
+
+.note{background:var(--sand-soft);border-radius:10px;padding:12px 14px;font-size:.92rem}
+.note.warn{background:var(--warn-soft)}
+.note.warn b{color:var(--warn)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.card ul{margin:6px 0 0;padding-left:1.1em}
+.card li{margin:3px 0}
+.thai{font-size:.82rem;color:var(--muted)}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+
+.check-group{display:flex;flex-direction:column;gap:6px}
+.check-group h3{font-size:1rem;margin-top:8px}
+.ck{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 12px;cursor:pointer}
+.ck input{margin-top:4px;accent-color:var(--accent);width:17px;height:17px;flex:none}
+.ck input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ck input:checked + span{color:var(--muted);text-decoration:line-through}
+.progress{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--muted)}
+.bar{flex:1;height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.mono{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* photos */
+.hero{margin:0 0 6px;border-radius:16px;overflow:hidden;aspect-ratio:2/1;max-width:100%;background:var(--accent-soft)}
+.hero img{width:100%;height:100%;object-fit:cover;display:block}
+.strip{display:grid;gap:8px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.strip.n1{grid-template-columns:minmax(0,1fr)}
+.strip.n1 .shot{aspect-ratio:21/8}
+.strip.n2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.shot,.tile{position:relative;margin:0;border-radius:10px;overflow:hidden;aspect-ratio:16/10;max-width:100%;background:var(--accent-soft)}
+.shot img,.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.shot figcaption,.tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 7px;font-size:.78rem;font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.62))}
+.tile figcaption small{display:block;font-weight:500;opacity:.85;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+@media (max-width:520px){.strip{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.strip .shot:nth-child(3){grid-column:1/-1;aspect-ratio:21/8}}
+.gallery{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.credits{font-size:.78rem;color:var(--muted);columns:2 260px;column-gap:24px}
+.credits p{break-inside:avoid;margin:0 0 4px}
+.credits a{color:var(--muted)}
+footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+</style>
+
+<div class="wrap">
+
+<header>
+  <figure class="hero"><img src="img/hero.jpg" alt="Longtail boats in clear water at Phi Phi Islands" width="1400" height="700"></figure>
+  <span class="eyebrow">Honeymoon plan · 15–24 January 2027</span>
+  <h1>Phuket, Krabi &amp; Bangkok in 10 days</h1>
+  <p class="intro muted">A relaxed, safe, vegetarian-friendly trip for two, planned hour by hour with at least 7 hours of sleep every night. You get dropped at and picked up from Mumbai airport, so that leg isn't counted in the cost.</p>
+  <div class="facts">
+    <div class="fact"><b>10 days · 9 nights</b><span>Fri 15 Jan → Sun 24 Jan</span></div>
+    <div class="fact"><b>3 bases</b><span>Phuket 3N · Krabi 3N · Bangkok 3N</span></div>
+    <div class="fact"><b>≈ ₹1.6 lakh</b><span>for two, all-in (saver plan)</span></div>
+    <div class="fact"><b>7–9 h sleep</b><span>every night, no rushed mornings</span></div>
+  </div>
+</header>
+
+<section>
+  <h2>The route</h2>
+  <div class="route">
+    <div class="stop"><small>Thu 14 Jan, night</small><strong>Mumbai</strong><em>BOM · Terminal 2</em></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="stop stay"><small>15–18 Jan</small><strong>Phuket</strong><em>3 nights · Kata Beach</em></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="stop stay"><small>18–21 Jan</small><strong>Krabi</strong><em>3 nights · Ao Nang</em></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="stop stay"><small>21–24 Jan</small><strong>Bangkok</strong><em>3 nights · Sukhumvit</em></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="stop"><small>Sun 24 Jan</small><strong>Mumbai</strong><em>Pickup at BOM</em></div>
+  </div>
+  <p class="small muted">All times below are <b>Thailand time</b>, which is 1h 30m ahead of India. Flight times are examples. Once you book, shift the first and last day to match your tickets. Sunset is around 6:25 pm in Phuket and Krabi, and 6:10 pm in Bangkok.</p>
+</section>
+
+<section>
+  <h2>Hour-by-hour plan</h2>
+  <div class="legend">
+    <span><i style="background:var(--night)"></i>Sleep</span>
+    <span><i style="background:var(--sand)"></i>Meal</span>
+    <span><i style="background:var(--muted)"></i>Travel</span>
+    <span><i style="background:var(--accent)"></i>Sightseeing</span>
+    <span><i style="background:#7fb8a6"></i>Free time / rest</span>
+  </div>
+  <p class="small muted">Every "Photos" link opens a Google Images search in a new tab.</p>
+
+  <!-- PHUKET -->
+  <div class="leg">
+    <div class="leg-head"><h3>Phuket · Kata Beach</h3><span class="small muted">Beaches, islands, massage</span></div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 0 <span>Thu 14 Jan · India time</span></h3></div>
+      <div class="sched">
+        <div class="r eat"><time>7:30 pm</time><div>Early dinner at home<span class="d">Eat light before a night flight.</span></div></div>
+        <div class="r go"><time>3 h before</time><div>Be at Mumbai airport, <b>Terminal 2</b><span class="d">Chhatrapati Shivaji Maharaj International. Check-in and immigration take time.</span></div></div>
+        <div class="r sleep"><time>On board</time><div><b>Sleep on the flight</b><span class="d">Bring a neck pillow and eye mask. A night flight only allows 3–4 hours, so Day 1 has a long nap built in.</span></div></div>
+      </div>
+      <p class="flag"><b>Sleep tip:</b> if you find a daytime Mumbai → Phuket flight at a similar price, take it. You'll arrive rested, and Day 1 simply starts later.</p>
+    </div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 1 <span>Fri 15 Jan · Arrival</span></h3><span class="sleepchip">Nap 4 h + night 8.5 h</span></div>
+      <div class="strip n1"><figure class="shot"><img src="img/kata.jpg" alt="Kata Beach" loading="lazy" width="640" height="440"><figcaption>Kata Beach</figcaption></figure></div>
+      <div class="sched">
+        <div class="r go"><time>7:30 am</time><div>Land at Phuket airport (HKT)<span class="d">Immigration and bags take about 1 hour. Exchange only ≈ 1,000 THB here; airport rates are poor.</span></div></div>
+        <div class="r go"><time>8:45 am</time><div>Grab or airport taxi to Kata, about 1 hour<span class="d">≈ 700–900 THB. Cheaper: the Phuket Smart Bus to Kata (≈ 100 THB per person, about 1.5 hours).</span></div></div>
+        <div class="r eat"><time>10:00 am</time><div>Drop bags at the hotel, then brunch nearby<span class="d">Ask for early check-in when you book. Veg: Indian restaurant or fruit and rice dishes at a café.</span></div></div>
+        <div class="r sleep"><time>11:00 am – 3:00 pm</time><div><b>Nap</b><span class="d">In the room if early check-in works; otherwise on pool loungers until the 2 pm check-in, then sleep.</span></div></div>
+        <div class="r free"><time>4:00 pm</time><div>Kata Beach: walk and swim<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Kata+Beach+Phuket" target="_blank" rel="noopener">Photos ↗</a><span class="d">Swim only between the red and yellow lifeguard flags.</span></div></div>
+        <div class="r see"><time>6:00 pm</time><div>Sunset on Kata Beach</div></div>
+        <div class="r eat"><time>7:30 pm</time><div>Dinner in Kata<span class="d">Several Indian restaurants within walking distance.</span></div></div>
+        <div class="r free"><time>8:45 pm</time><div>Back to the hotel, pack a day bag for tomorrow<span class="d">Swimwear, towel, sunscreen, waterproof pouch, a change of clothes.</span></div></div>
+        <div class="r sleep"><time>9:30 pm – 6:00 am</time><div><b>Sleep (8.5 h)</b></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 2 <span>Sat 16 Jan · Phi Phi Islands</span></h3><span class="sleepchip">9.5 h sleep</span></div>
+      <div class="strip n2"><figure class="shot"><img src="img/mayabay.jpg" alt="Maya Bay" loading="lazy" width="640" height="440"><figcaption>Maya Bay</figcaption></figure><figure class="shot"><img src="img/pileh.jpg" alt="Pileh Lagoon" loading="lazy" width="640" height="440"><figcaption>Pileh Lagoon</figcaption></figure></div>
+      <div class="sched">
+        <div class="r eat"><time>6:00 am</time><div>Wake up, quick breakfast<span class="d">If breakfast starts after your pickup, ask the hotel for a packed breakfast the night before.</span></div></div>
+        <div class="r go"><time>7:00 am</time><div>Tour pickup from the hotel <span class="tag">Book ahead</span><span class="d">Join-in speedboat tour ≈ 1,500 THB per person including lunch, plus 400 THB per person national park fee.</span></div></div>
+        <div class="r see"><time>8:30 am – 3:30 pm</time><div>Maya Bay, Pileh Lagoon, Viking Cave, snorkelling<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Maya+Bay+Phi+Phi+Islands" target="_blank" rel="noopener">Photos ↗</a><span class="d">Lunch on Phi Phi Don. Ask for vegetarian when booking, and carry fruit and biscuits. Wear life jackets on the boat.</span></div></div>
+        <div class="r go"><time>4:30 pm</time><div>Dropped back at the hotel</div></div>
+        <div class="r free"><time>4:30 – 6:45 pm</time><div>Shower and rest<span class="d">Boat days are tiring. Don't plan anything else.</span></div></div>
+        <div class="r eat"><time>7:00 pm</time><div>Dinner near the hotel</div></div>
+        <div class="r free"><time>8:15 pm</time><div>Slow walk along Kata's main road, ice cream</div></div>
+        <div class="r sleep"><time>10:00 pm – 7:30 am</time><div><b>Sleep (9.5 h)</b></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 3 <span>Sun 17 Jan · Big Buddha &amp; Promthep Cape</span></h3><span class="sleepchip">8.5 h sleep</span></div>
+      <div class="strip n3"><figure class="shot"><img src="img/bigbuddha.jpg" alt="Big Buddha" loading="lazy" width="640" height="440"><figcaption>Big Buddha</figcaption></figure><figure class="shot"><img src="img/karonview.jpg" alt="Karon Viewpoint" loading="lazy" width="640" height="440"><figcaption>Karon Viewpoint</figcaption></figure><figure class="shot"><img src="img/promthep.jpg" alt="Promthep Cape" loading="lazy" width="640" height="440"><figcaption>Promthep Cape</figcaption></figure></div>
+      <div class="sched">
+        <div class="r eat"><time>7:30 am</time><div>Wake up, slow hotel breakfast</div></div>
+        <div class="r go"><time>9:30 am</time><div>Grab to Big Buddha, about 25 minutes<span class="d">≈ 300–400 THB. Ask the driver to wait, or book a fresh Grab for the next stop.</span></div></div>
+        <div class="r see"><time>10:00 – 11:15 am</time><div>Big Buddha<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Big+Buddha+Phuket" target="_blank" rel="noopener">Photos ↗</a><span class="d">Free (donations welcome). Cover shoulders and knees; sarongs are lent at the entrance.</span></div></div>
+        <div class="r see"><time>11:40 am – 12:15 pm</time><div>Karon Viewpoint: three bays in one view<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Karon+Viewpoint+Phuket" target="_blank" rel="noopener">Photos ↗</a></div></div>
+        <div class="r eat"><time>12:45 pm</time><div>Lunch back in Kata or Karon</div></div>
+        <div class="r free"><time>1:45 – 3:45 pm</time><div>Rest in the room or by the pool<span class="d">The hottest part of the day.</span></div></div>
+        <div class="r free"><time>4:00 – 5:00 pm</time><div>1-hour traditional Thai massage for two<span class="d">At a local shop ≈ 300–400 THB per person. Much cheaper than the hotel spa.</span></div></div>
+        <div class="r go"><time>5:30 pm</time><div>Grab to Promthep Cape, about 20 minutes</div></div>
+        <div class="r see"><time>6:00 – 6:45 pm</time><div>Sunset at Promthep Cape<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Promthep+Cape+sunset" target="_blank" rel="noopener">Photos ↗</a><span class="d">Phuket's most famous sunset spot. Arrive early for a good place.</span></div></div>
+        <div class="r eat"><time>7:15 pm</time><div>Dinner back in Kata</div></div>
+        <div class="r free"><time>8:45 pm</time><div>Pack for tomorrow's transfer</div></div>
+        <div class="r sleep"><time>10:00 pm – 6:30 am</time><div><b>Sleep (8.5 h)</b></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KRABI -->
+  <div class="leg">
+    <div class="leg-head"><h3>Krabi · Ao Nang</h3><span class="small muted">Cliffs, islands, slow days</span></div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 4 <span>Mon 18 Jan · Ferry to Ao Nang</span></h3><span class="sleepchip">9 h sleep</span></div>
+      <div class="strip n1"><figure class="shot"><img src="img/aonang.jpg" alt="Ao Nang Beach" loading="lazy" width="640" height="440"><figcaption>Ao Nang Beach</figcaption></figure></div>
+      <div class="sched">
+        <div class="r eat"><time>6:30 am</time><div>Wake up, breakfast, check out</div></div>
+        <div class="r go"><time>7:45 am</time><div>Ferry pickup from the hotel <span class="tag">Book ahead</span><span class="d">Ferry from Rassada Pier ≈ 650–900 THB per person including hotel pickup.</span></div></div>
+        <div class="r see"><time>8:30 am – 12:00 pm</time><div>Ferry to Ao Nang through the islands<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Phuket+to+Ao+Nang+ferry+islands" target="_blank" rel="noopener">Photos ↗</a><span class="d">Sit on the top deck for the views. The included minivan drops you at your hotel.</span></div></div>
+        <div class="r eat"><time>12:30 pm</time><div>Check in, lunch on Ao Nang's main road</div></div>
+        <div class="r free"><time>1:30 – 4:30 pm</time><div>Rest or pool</div></div>
+        <div class="r free"><time>4:30 pm</time><div>Walk along Ao Nang Beach<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Ao+Nang+Beach+Krabi" target="_blank" rel="noopener">Photos ↗</a></div></div>
+        <div class="r see"><time>6:00 pm</time><div>Sunset at Ao Nang Beach</div></div>
+        <div class="r eat"><time>7:00 pm</time><div>Dinner at an Indian restaurant on the main road</div></div>
+        <div class="r free"><time>8:15 pm</time><div>Book tomorrow's 4 Islands tour at a beach tour desk<span class="d">Longtail boats are cheapest. Ask what's included and about vegetarian lunch.</span></div></div>
+        <div class="r sleep"><time>9:30 pm – 6:30 am</time><div><b>Sleep (9 h)</b></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 5 <span>Tue 19 Jan · 4 Islands tour</span></h3><span class="sleepchip">9.5 h sleep</span></div>
+      <div class="strip n2"><figure class="shot"><img src="img/tup.jpg" alt="Tup Island" loading="lazy" width="640" height="440"><figcaption>Tup Island</figcaption></figure><figure class="shot"><img src="img/sunset.jpg" alt="Ao Nang at sunset" loading="lazy" width="640" height="440"><figcaption>Ao Nang at sunset</figcaption></figure></div>
+      <div class="sched">
+        <div class="r eat"><time>7:00 am</time><div>Wake up, breakfast</div></div>
+        <div class="r go"><time>8:30 am</time><div>Pickup, or walk to the longtail counter on Ao Nang Beach<span class="d">Longtail tour ≈ 500–700 THB per person, plus ≈ 400 THB per person park fee.</span></div></div>
+        <div class="r see"><time>9:00 am – 3:00 pm</time><div>Phra Nang Cave Beach, Chicken Island, Tup Island sandbar, Poda Island<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Krabi+4+islands+tour+Tup+Island" target="_blank" rel="noopener">Photos ↗</a><span class="d">Lunch on Poda. Carry a veg lunch from the hotel or 7-Eleven if the tour can't promise one.</span></div></div>
+        <div class="r free"><time>3:30 – 5:30 pm</time><div>Back to the hotel, shower, rest</div></div>
+        <div class="r see"><time>5:45 pm</time><div>Sunset at Nopparat Thara Beach, 10 minutes away<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Nopparat+Thara+Beach+sunset" target="_blank" rel="noopener">Photos ↗</a><span class="d">Quieter than Ao Nang. At low tide you can walk far out on the sand.</span></div></div>
+        <div class="r eat"><time>7:15 pm</time><div>Dinner</div></div>
+        <div class="r sleep"><time>9:30 pm – 7:00 am</time><div><b>Sleep (9.5 h)</b></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 6 <span>Wed 20 Jan · Railay Beach</span></h3><span class="sleepchip">8.5 h sleep</span></div>
+      <div class="strip n2"><figure class="shot"><img src="img/railay.jpg" alt="Railay Beach" loading="lazy" width="640" height="440"><figcaption>Railay Beach</figcaption></figure><figure class="shot"><img src="img/phranang.jpg" alt="Phra Nang Cave Beach" loading="lazy" width="640" height="440"><figcaption>Phra Nang Cave Beach</figcaption></figure></div>
+      <div class="sched">
+        <div class="r eat"><time>7:00 am</time><div>Wake up, breakfast</div></div>
+        <div class="r go"><time>9:00 am</time><div>Longtail from Ao Nang Beach to Railay West, about 15 minutes<span class="d">≈ 100–200 THB per person each way. Boats leave once 6–8 people are on board.</span></div></div>
+        <div class="r see"><time>9:30 – 11:00 am</time><div>Swim at Railay West<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Railay+Beach+Krabi" target="_blank" rel="noopener">Photos ↗</a><span class="d">Calm water and limestone cliffs. Mornings are least crowded.</span></div></div>
+        <div class="r see"><time>11:00 am – 12:15 pm</time><div>Walk 15 minutes to Phra Nang Cave Beach<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Phra+Nang+Cave+Beach" target="_blank" rel="noopener">Photos ↗</a><span class="d">A shaded path under the cliffs. It's one of Thailand's most beautiful beaches.</span></div></div>
+        <div class="r eat"><time>12:30 pm</time><div>Lunch on Railay's walking street</div></div>
+        <div class="r free"><time>1:30 – 4:00 pm</time><div>Relax in the shade on the beach</div></div>
+        <div class="r go"><time>4:15 pm</time><div>Longtail back to Ao Nang<span class="d">Leave before dark. Boats get fewer and pricier in the evening.</span></div></div>
+        <div class="r free"><time>4:45 – 6:00 pm</time><div>Shower, rest, pack for tomorrow</div></div>
+        <div class="r eat"><time>6:30 pm</time><div><b>Honeymoon dinner</b> at a beachfront restaurant<span class="d">Ask the hotel to arrange a candlelit table. Many do this free or cheaply for honeymooners.</span></div></div>
+        <div class="r sleep"><time>10:00 pm – 6:30 am</time><div><b>Sleep (8.5 h)</b></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANGKOK -->
+  <div class="leg">
+    <div class="leg-head"><h3>Bangkok · Sukhumvit</h3><span class="small muted">Temples, river, markets, easiest veg food</span></div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 7 <span>Thu 21 Jan · Fly to Bangkok, river evening</span></h3><span class="sleepchip">8.5 h sleep</span></div>
+      <div class="strip n1"><figure class="shot"><img src="img/asiatique.jpg" alt="Asiatique Riverfront" loading="lazy" width="640" height="440"><figcaption>Asiatique Riverfront</figcaption></figure></div>
+      <div class="sched">
+        <div class="r eat"><time>7:00 am</time><div>Wake up, breakfast, check out by 8:45</div></div>
+        <div class="r go"><time>9:00 am</time><div>Grab or airport shuttle to Krabi airport (KBV), about 40 minutes<span class="d">Grab ≈ 400–500 THB, or a shared van ≈ 150 THB per person.</span></div></div>
+        <div class="r go"><time>11:00 am – 12:20 pm</time><div>Fly Krabi → Bangkok <span class="tag">Book ahead</span><span class="d">Example time. Check whether your ticket lands at DMK or BKK airport.</span></div></div>
+        <div class="r go"><time>12:30 – 1:45 pm</time><div>Bags, then Grab to Sukhumvit Soi 11<span class="d">≈ 300–450 THB, about 45–60 minutes.</span></div></div>
+        <div class="r eat"><time>2:00 pm</time><div>Check in, late lunch at an Indian restaurant on Soi 11</div></div>
+        <div class="r free"><time>3:00 – 4:45 pm</time><div>Rest</div></div>
+        <div class="r go"><time>5:00 pm</time><div>Skytrain (BTS) from Nana to Saphan Taksin, about 25 minutes, ≈ 45 THB</div></div>
+        <div class="r see"><time>5:45 – 7:00 pm</time><div>Sunset on the river: free shuttle boat from Sathorn Pier to Asiatique<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Asiatique+the+Riverfront+Bangkok" target="_blank" rel="noopener">Photos ↗</a><span class="d">A free riverside view instead of a paid dinner cruise. Saves about ₹7,000.</span></div></div>
+        <div class="r eat"><time>7:00 – 8:30 pm</time><div>Dinner and a walk at Asiatique Riverfront<span class="d">Open-air night market with a big Ferris wheel. Several restaurants have veg menus.</span></div></div>
+        <div class="r go"><time>8:45 pm</time><div>Shuttle boat and BTS back to the hotel</div></div>
+        <div class="r sleep"><time>10:00 pm – 6:30 am</time><div><b>Sleep (8.5 h)</b></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 8 <span>Fri 22 Jan · Grand Palace, Wat Pho, Wat Arun</span></h3><span class="sleepchip">9 h sleep</span></div>
+      <div class="strip n3"><figure class="shot"><img src="img/grandpalace.jpg" alt="Grand Palace" loading="lazy" width="640" height="440"><figcaption>Grand Palace</figcaption></figure><figure class="shot"><img src="img/watpho.jpg" alt="Wat Pho" loading="lazy" width="640" height="440"><figcaption>Wat Pho</figcaption></figure><figure class="shot"><img src="img/watarun.jpg" alt="Wat Arun" loading="lazy" width="640" height="440"><figcaption>Wat Arun</figcaption></figure></div>
+      <div class="sched">
+        <div class="r eat"><time>6:30 am</time><div>Wake up, breakfast<span class="d">Wear covered shoulders and full-length trousers or a long skirt. The palace turns away shorts and sleeveless tops.</span></div></div>
+        <div class="r go"><time>7:45 am</time><div>Grab to the Grand Palace, about 30–45 minutes, ≈ 200 THB</div></div>
+        <div class="r see"><time>8:30 – 10:45 am</time><div>Grand Palace and the Emerald Buddha<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Grand+Palace+Bangkok" target="_blank" rel="noopener">Photos ↗</a><span class="d">≈ 500 THB per person. Opens 8:30 am. Early means fewer crowds and less heat. Ignore strangers who say it's closed; that's a common scam.</span></div></div>
+        <div class="r see"><time>11:00 am – 12:00 pm</time><div>Wat Pho: the reclining Buddha, a 10-minute walk away<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Wat+Pho+reclining+Buddha" target="_blank" rel="noopener">Photos ↗</a><span class="d">≈ 300 THB per person, includes a bottle of water.</span></div></div>
+        <div class="r see"><time>12:10 – 1:00 pm</time><div>Cross-river ferry from Tha Tien to Wat Arun (≈ 5 THB)<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Wat+Arun+Bangkok" target="_blank" rel="noopener">Photos ↗</a><span class="d">≈ 200 THB per person. The steep steps have the best river view.</span></div></div>
+        <div class="r eat"><time>1:15 pm</time><div>Lunch near the river piers, or back at Soi 11</div></div>
+        <div class="r free"><time>2:30 – 5:00 pm</time><div>Back to the hotel, rest in the heat of the day</div></div>
+        <div class="r see"><time>5:30 – 8:30 pm</time><div>Terminal 21 mall, one Skytrain stop away (Asok)<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Terminal+21+Bangkok" target="_blank" rel="noopener">Photos ↗</a><span class="d">Each floor is themed as a different city. The top-floor food court is cheap and has veg dishes.</span></div></div>
+        <div class="r sleep"><time>10:00 pm – 7:00 am</time><div><b>Sleep (9 h)</b></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 9 <span>Sat 23 Jan · Chatuchak &amp; ICONSIAM</span></h3><span class="sleepchip">9 h sleep</span></div>
+      <div class="strip n2"><figure class="shot"><img src="img/chatuchak.jpg" alt="Chatuchak Market" loading="lazy" width="640" height="440"><figcaption>Chatuchak Market</figcaption></figure><figure class="shot"><img src="img/iconsiam.jpg" alt="ICONSIAM" loading="lazy" width="640" height="440"><figcaption>ICONSIAM</figcaption></figure></div>
+      <div class="sched">
+        <div class="r eat"><time>7:00 am</time><div>Wake up, breakfast</div></div>
+        <div class="r go"><time>8:45 am</time><div>BTS from Nana to Mo Chit, about 25 minutes, ≈ 50 THB</div></div>
+        <div class="r see"><time>9:30 am – 1:00 pm</time><div>Chatuchak Weekend Market<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Chatuchak+Weekend+Market" target="_blank" rel="noopener">Photos ↗</a><span class="d">Open only on weekends, with thousands of stalls: clothes, crafts, home décor. Bargain politely. Keep phones in front pockets.</span></div></div>
+        <div class="r eat"><time>1:00 pm</time><div>Lunch at the market<span class="d">Look for yellow "jay" flags. Coconut ice cream is a must.</span></div></div>
+        <div class="r free"><time>2:00 – 4:45 pm</time><div>BTS back, drop off shopping, rest</div></div>
+        <div class="r go"><time>5:00 pm</time><div>BTS to Saphan Taksin, then free shuttle boat to ICONSIAM</div></div>
+        <div class="r see"><time>5:45 – 6:30 pm</time><div>Sunset from ICONSIAM's riverside terrace<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=ICONSIAM+Bangkok+river" target="_blank" rel="noopener">Photos ↗</a></div></div>
+        <div class="r eat"><time>6:45 pm</time><div>Farewell dinner at SookSiam, the indoor floating-market food hall<span class="d">Cheap regional Thai stalls. Ask for jay or vegetarian dishes.</span></div></div>
+        <div class="r go"><time>8:30 pm</time><div>Back to the hotel, pack</div></div>
+        <div class="r sleep"><time>10:00 pm – 7:00 am</time><div><b>Sleep (9 h)</b></div></div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-top"><h3>Day 10 <span>Sun 24 Jan · Fly home</span></h3></div>
+      <div class="sched">
+        <div class="r eat"><time>7:00 am</time><div>Wake up, slow breakfast</div></div>
+        <div class="r free"><time>9:00 – 11:30 am</time><div>Last shopping near the hotel, or a walk in Benjakitti Park<a class="ph" href="https://www.google.com/search?tbm=isch&amp;q=Benjakitti+Forest+Park+Bangkok" target="_blank" rel="noopener">Photos ↗</a></div></div>
+        <div class="r eat"><time>11:45 am</time><div>Check out by noon, lunch on Soi 11<span class="d">Leave bags at the hotel if your flight is in the evening.</span></div></div>
+        <div class="r go"><time>3.5 h before</time><div>Leave for the airport<span class="d">BKK: Grab ≈ 400 THB, or the Airport Rail Link from Phaya Thai ≈ 45 THB per person.</span></div></div>
+        <div class="r go"><time>Flight</time><div>Bangkok → Mumbai, about 4.5 hours; pickup at BOM</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Where to stay (saver picks)</h2>
+  <p class="small muted">Well-rated, clean, safe 3–4 star hotels in good locations. Book rates <b>with breakfast included</b> and free cancellation. Prices are rough January estimates per night. Check current rates on Agoda or Booking.</p>
+  <div class="hotels">
+    <div class="hotel"><span class="city">Phuket · 3 nights</span><h3>Sugar Marina Resort – Art, Kata</h3><span class="price">≈ ₹4–5k / night</span>
+      <p class="small">Good value, a short walk to Kata Beach and restaurants.</p>
+      <p class="alt">+ ₹1.5–2k a night: Chanalai Romantica (adults only, veg breakfast).</p></div>
+    <div class="hotel"><span class="city">Krabi · 3 nights</span><h3>BlueSotel SMART Krabi Aonang</h3><span class="price">≈ ₹3.5–5k / night</span>
+      <p class="small">Adults only, close to Ao Nang's beach and the Indian restaurants.</p>
+      <p class="alt">+ ₹3–4k a night: Avani Ao Nang Cliff (rooftop pool).</p></div>
+    <div class="hotel"><span class="city">Bangkok · 3 nights</span><h3>Holiday Inn Express Sukhumvit 11</h3><span class="price">≈ ₹4.5–5.5k / night</span>
+      <p class="small">Breakfast included. On the street with the most Indian veg restaurants, near Nana Skytrain station.</p>
+      <p class="alt">+ ₹2–3k a night: Aloft Sukhumvit 11 (same street, rooftop pool).</p></div>
+  </div>
+  <div class="note"><b>Email each hotel after booking:</b> “We are honeymooners and strict vegetarians (no meat, fish, egg or fish sauce). Please confirm vegetarian breakfast options.” Many hotels add a cake, flowers or an upgrade for honeymooners.</div>
+</section>
+
+<section>
+  <h2>Budget for two</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Item</th><th>How it's kept low</th><th class="num">Before</th><th class="num">Saver plan</th></tr></thead>
+    <tbody>
+      <tr><td>Flights: Mumbai → Phuket, Bangkok → Mumbai</td><td>Book this month, light baggage, compare the Bangkok option below</td><td class="num"><s>₹55,000</s></td><td class="num">₹50,000</td></tr>
+      <tr><td>Flight: Krabi → Bangkok</td><td>AirAsia or Thai Lion, 15 kg shared bag</td><td class="num"><s>₹6,000</s></td><td class="num">₹5,000</td></tr>
+      <tr><td>Hotels, 9 nights with breakfast</td><td>Saver picks above</td><td class="num"><s>₹57,000</s></td><td class="num">₹39,000</td></tr>
+      <tr><td>Tours &amp; entry fees</td><td>Join-in tours, longtail boats, local massage, no paid cruise</td><td class="num"><s>₹30,000</s></td><td class="num">₹23,000</td></tr>
+      <tr><td>Ferry &amp; local transport</td><td>Grab, Skytrain, free shuttle boats</td><td class="num"><s>₹13,000</s></td><td class="num">₹15,000</td></tr>
+      <tr><td>Vegetarian lunch &amp; dinner</td><td>≈ 900 THB a day for two: local veg Thai, food courts, Indian some nights</td><td class="num"><s>₹25,000</s></td><td class="num">₹23,000</td></tr>
+      <tr><td>Insurance, one eSIM, tips</td><td>Share one eSIM's hotspot</td><td class="num"><s>₹6,000</s></td><td class="num">₹5,000</td></tr>
+      <tr class="total"><td>Total</td><td></td><td class="num"><s>₹1.92 L</s></td><td class="num">≈ ₹1.60 L</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">Shopping isn't included. Rates use roughly ₹2.6 per Thai baht. The transport line went up a little because the earlier figure undercounted Grab rides between sights.</p>
+
+  <div class="two">
+    <div class="card"><h3>Cut more if needed</h3><ul>
+      <li><b>Fly Mumbai ⇄ Bangkok return</b>, then a cheap AirAsia flight Bangkok → Phuket on arrival day. Often ₹5–10k less for two. Leave a 4-hour gap between flights.</li>
+      <li><b>9 days instead of 10</b> (Bangkok 2 nights): saves ≈ ₹7k.</li>
+      <li><b>Minivan instead of ferry</b> to Krabi: saves ≈ ₹1k, but it's less scenic.</li>
+      <li>Realistic floor for this 3-city plan: <b>≈ ₹1.45–1.5 lakh</b>.</li>
+    </ul></div>
+    <div class="card"><h3>Lowest-cost alternative</h3><ul>
+      <li>Skip Bangkok: <b>Phuket 3N + Krabi 3N</b>, 7 days.</li>
+      <li>Fly into Phuket and back from Phuket (2.5-hour drive from Ao Nang, ≈ 2,000 THB by car).</li>
+      <li>Estimate: <b>≈ ₹1.15–1.25 lakh</b> for two.</li>
+      <li>Trade-off: no temples or shopping, and fewer easy veg-food options.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Places you'll see</h2>
+  <p class="small muted">More photos of each place: use the "Photos ↗" links in the day plan.</p>
+  <div class="gallery">
+    <figure class="tile"><img src="img/kata.jpg" alt="Kata Beach" loading="lazy" width="640" height="440"><figcaption><small>Phuket</small>Kata Beach</figcaption></figure>
+    <figure class="tile"><img src="img/mayabay.jpg" alt="Maya Bay" loading="lazy" width="640" height="440"><figcaption><small>Phi Phi</small>Maya Bay</figcaption></figure>
+    <figure class="tile"><img src="img/pileh.jpg" alt="Pileh Lagoon" loading="lazy" width="640" height="440"><figcaption><small>Phi Phi</small>Pileh Lagoon</figcaption></figure>
+    <figure class="tile"><img src="img/bigbuddha.jpg" alt="Big Buddha" loading="lazy" width="640" height="440"><figcaption><small>Phuket</small>Big Buddha</figcaption></figure>
+    <figure class="tile"><img src="img/karonview.jpg" alt="Karon Viewpoint" loading="lazy" width="640" height="440"><figcaption><small>Phuket</small>Karon Viewpoint</figcaption></figure>
+    <figure class="tile"><img src="img/promthep.jpg" alt="Promthep Cape" loading="lazy" width="640" height="440"><figcaption><small>Phuket</small>Promthep Cape</figcaption></figure>
+    <figure class="tile"><img src="img/aonang.jpg" alt="Ao Nang Beach" loading="lazy" width="640" height="440"><figcaption><small>Krabi</small>Ao Nang Beach</figcaption></figure>
+    <figure class="tile"><img src="img/tup.jpg" alt="Tup Island" loading="lazy" width="640" height="440"><figcaption><small>Krabi</small>Tup Island</figcaption></figure>
+    <figure class="tile"><img src="img/sunset.jpg" alt="Ao Nang at sunset" loading="lazy" width="640" height="440"><figcaption><small>Krabi</small>Ao Nang at sunset</figcaption></figure>
+    <figure class="tile"><img src="img/railay.jpg" alt="Railay Beach" loading="lazy" width="640" height="440"><figcaption><small>Krabi</small>Railay Beach</figcaption></figure>
+    <figure class="tile"><img src="img/phranang.jpg" alt="Phra Nang Cave Beach" loading="lazy" width="640" height="440"><figcaption><small>Krabi</small>Phra Nang Cave Beach</figcaption></figure>
+    <figure class="tile"><img src="img/asiatique.jpg" alt="Asiatique Riverfront" loading="lazy" width="640" height="440"><figcaption><small>Bangkok</small>Asiatique Riverfront</figcaption></figure>
+    <figure class="tile"><img src="img/grandpalace.jpg" alt="Grand Palace" loading="lazy" width="640" height="440"><figcaption><small>Bangkok</small>Grand Palace</figcaption></figure>
+    <figure class="tile"><img src="img/watpho.jpg" alt="Wat Pho" loading="lazy" width="640" height="440"><figcaption><small>Bangkok</small>Wat Pho</figcaption></figure>
+    <figure class="tile"><img src="img/watarun.jpg" alt="Wat Arun" loading="lazy" width="640" height="440"><figcaption><small>Bangkok</small>Wat Arun</figcaption></figure>
+    <figure class="tile"><img src="img/chatuchak.jpg" alt="Chatuchak Market" loading="lazy" width="640" height="440"><figcaption><small>Bangkok</small>Chatuchak Market</figcaption></figure>
+    <figure class="tile"><img src="img/iconsiam.jpg" alt="ICONSIAM" loading="lazy" width="640" height="440"><figcaption><small>Bangkok</small>ICONSIAM</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h2>Vegetarian food guide</h2>
+  <div class="two">
+    <div class="card"><h3>Say this</h3>
+      <ul>
+        <li><b>Gin jay</b> <span class="thai">กินเจ</span>: I eat "jay" (vegan: no meat, egg or fish sauce, often no onion or garlic)</li>
+        <li><b>Mai sai nuea sat</b> <span class="thai">ไม่ใส่เนื้อสัตว์</span>: no meat</li>
+        <li><b>Mai sai nam pla</b> <span class="thai">ไม่ใส่น้ำปลา</span>: no fish sauce</li>
+        <li><b>Mai sai khai</b> <span class="thai">ไม่ใส่ไข่</span>: no egg</li>
+        <li><b>Mai phet</b> <span class="thai">ไม่เผ็ด</span>: not spicy</li>
+      </ul>
+      <p class="small muted" style="margin-top:8px">Look for <b>yellow flags with red Thai letters</b> (เจ). They mark vegan "jay" food stalls.</p></div>
+    <div class="card"><h3>Safe orders</h3>
+      <ul>
+        <li>Pad pak ruam: stir-fried mixed vegetables</li>
+        <li>Pineapple or vegetable fried rice (say no egg if needed)</li>
+        <li>Pad Thai jay: tofu, no fish sauce, no egg</li>
+        <li>Mango sticky rice, coconut ice cream, fresh fruit</li>
+      </ul>
+      <div class="note warn" style="margin-top:10px"><b>Watch out:</b> Thai curry pastes usually contain shrimp paste, and som tam often has dried shrimp. Order curries only at jay or Indian restaurants.</div></div>
+  </div>
+  <p class="small muted">Apps: HappyCow (veg restaurants near you), Google Translate with Thai downloaded for offline use, Grab (taxis and food delivery).</p>
+</section>
+
+<section>
+  <h2>Money</h2>
+  <div class="two">
+    <div class="card"><h3>US dollar account</h3><ul>
+      <li>Thai money changers such as SuperRich and Vasu give very good rates for USD cash. Bring clean, undamaged $100 or $50 notes.</li>
+      <li>A US debit card works well at ATMs if your bank charges no foreign transaction fee. Thai ATMs charge ≈ 220 THB per withdrawal, so take out larger amounts less often.</li></ul></div>
+    <div class="card"><h3>INR side</h3><ul>
+      <li>A forex card or a zero-markup credit card works for hotels and malls. Normal Indian cards add about 3.5% plus GST on foreign payments.</li>
+      <li>Book flights and hotels directly. A package tour bought from an Indian agent may attract TCS (tax collected at source) upfront.</li></ul></div>
+  </div>
+  <div class="note"><b>Always pay in THB</b> when a card machine offers to charge in INR or USD. Keep ≈ 20,000 THB in cash for two in case immigration asks for proof of funds.</div>
+  <p class="small muted">This is general travel-money information, not financial advice.</p>
+</section>
+
+<section>
+  <h2>Booking checklist</h2>
+  <div class="progress"><span id="pc">0 of 0 done</span><div class="bar"><i id="pb"></i></div></div>
+  <p class="small muted">Ticks are saved in this browser only.</p>
+  <div id="checklist">
+    <div class="check-group"><h3>Now · by 30 Nov 2026</h3>
+      <label class="ck"><input type="checkbox" id="c1"><span>Check both passports are valid until at least <b>mid-July 2027</b> (6 months after entry) and have 2 blank pages.</span></label>
+      <label class="ck"><input type="checkbox" id="c2"><span>Compare (a) <b>Mumbai → Phuket + Bangkok → Mumbai</b> with (b) <b>Mumbai ⇄ Bangkok + Bangkok → Phuket</b> on Google Flights, and book the cheaper one. Use the same names as on your passports.</span></label>
+      <label class="ck"><input type="checkbox" id="c3"><span>Book <b>Krabi → Bangkok</b> on 21 Jan, late morning. Note whether it lands at BKK or DMK.</span></label>
+    </div>
+    <div class="check-group"><h3>By 15 Dec 2026</h3>
+      <label class="ck"><input type="checkbox" id="c4"><span>Book all 3 hotels <b>with breakfast</b> and free cancellation. Add "honeymoon" in the special requests and ask for early check-in on 15 Jan.</span></label>
+      <label class="ck"><input type="checkbox" id="c5"><span>Email each hotel to confirm vegetarian breakfast.</span></label>
+      <label class="ck"><input type="checkbox" id="c6"><span>Check your US card's foreign transaction fee. Get a forex card or zero-markup card as backup.</span></label>
+    </div>
+    <div class="check-group"><h3>Early January 2027</h3>
+      <label class="ck"><input type="checkbox" id="c7"><span>Buy travel insurance for both of you that covers water activities and medical care.</span></label>
+      <label class="ck"><input type="checkbox" id="c8"><span>Book the Phi Phi join-in speedboat tour (16 Jan) and ask for vegetarian lunches.</span></label>
+      <label class="ck"><input type="checkbox" id="c9"><span>Book the Phuket → Ao Nang ferry with hotel pickup (18 Jan).</span></label>
+      <label class="ck"><input type="checkbox" id="c11"><span>Get USD cash and keep ≈ 20,000 THB worth ready.</span></label>
+    </div>
+    <div class="check-group"><h3>12–14 Jan 2027</h3>
+      <label class="ck"><input type="checkbox" id="c12"><span>Fill in the <b>TDAC</b> for both of you (within 72 hours of landing) and save the QR codes.</span></label>
+      <label class="ck"><input type="checkbox" id="c13"><span>Install Grab, Bolt and HappyCow. Download Thai in Google Translate. Buy one Thai eSIM.</span></label>
+      <label class="ck"><input type="checkbox" id="c14"><span>Print or save copies of passports, tickets, hotel bookings and insurance.</span></label>
+      <label class="ck"><input type="checkbox" id="c15"><span>Do web check-in. Pack a neck pillow and eye mask for the night flight. Confirm the Mumbai drop time.</span></label>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Packing &amp; safety</h2>
+  <div class="two">
+    <div class="card"><h3>Pack</h3><ul>
+      <li>Light cotton clothes, swimwear, a cover-up</li>
+      <li>One modest outfit each for temples (shoulders and knees covered)</li>
+      <li>Reef-safe sunscreen, sunglasses, a hat</li>
+      <li>Waterproof phone pouch, flip-flops, a light dry bag</li>
+      <li>Thai sockets take Indian two-pin plugs; a universal adapter is safer</li>
+      <li>Basic medicines (motion sickness tablets for boats)</li>
+    </ul></div>
+    <div class="card"><h3>Stay safe</h3><ul>
+      <li>Use Grab or Bolt instead of street tuk-tuks.</li>
+      <li>Don't rent scooters without an International Driving Permit. Insurance won't cover accidents.</li>
+      <li>Skip jet-ski rentals, which are a common damage scam.</li>
+      <li>Swim only where there are flags and lifeguards.</li>
+      <li>Keep passports in the hotel safe and carry copies.</li>
+    </ul></div>
+  </div>
+  <div class="tbl"><table style="min-width:0">
+    <thead><tr><th>Emergency</th><th>Number</th></tr></thead>
+    <tbody>
+      <tr><td>Tourist Police (speaks English)</td><td class="mono">1155</td></tr>
+      <tr><td>Ambulance</td><td class="mono">1669</td></tr>
+      <tr><td>Embassy of India, Bangkok</td><td class="mono">+66 2 258 0300</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Photo credits</h2>
+  <p class="small muted">Photos from Wikimedia Commons, cropped and resized. Licences: CC BY, CC BY-SA or public domain.</p>
+  <div class="credits">
+    <p>aonang: <a href="https://commons.wikimedia.org/wiki/File:Ao_Nang_beach_panorama_3.jpg" target="_blank" rel="noopener">Ao Nang beach panorama 3.jpg</a> by kallerna, CC BY-SA 3.0</p>
+    <p>asiatique: <a href="https://commons.wikimedia.org/wiki/File:Asiatique,_Bangkok_from_Chao_Phraya_River_2.jpg" target="_blank" rel="noopener">Asiatique, Bangkok from Chao Phraya River 2.jpg</a> by Slyronit, CC BY-SA 4.0</p>
+    <p>bigbuddha: <a href="https://commons.wikimedia.org/wiki/File:The_Big_Buddha,_Phuket.jpg" target="_blank" rel="noopener">The Big Buddha, Phuket.jpg</a> by Subhrajyoti07, CC BY-SA 4.0</p>
+    <p>chatuchak: <a href="https://commons.wikimedia.org/wiki/File:Chatuchak_Weekend_Market_2.jpg" target="_blank" rel="noopener">Chatuchak Weekend Market 2.jpg</a> by Christophe95, CC BY-SA 4.0</p>
+    <p>grandpalace: <a href="https://commons.wikimedia.org/wiki/File:Wat_Phra_Kaew_by_Ninara_TSP_edit_crop.jpg" target="_blank" rel="noopener">Wat Phra Kaew by Ninara TSP edit crop.jpg</a> by Original image: Ninara from Helsinki, Finland.  Edit: TSP, CC BY 4.0</p>
+    <p>hero: <a href="https://commons.wikimedia.org/wiki/File:Phi_Phi_Island_Long_Boats_by_Don_Ramey_Logan.jpg" target="_blank" rel="noopener">Phi Phi Island Long Boats by Don Ramey Logan.jpg</a> by Don Ramey Logan, CC BY 3.0</p>
+    <p>iconsiam: <a href="https://commons.wikimedia.org/wiki/File:Approaching_Iconsiam_from_Chao_Phraya_River,_Bangkok.jpg" target="_blank" rel="noopener">Approaching Iconsiam from Chao Phraya River, Bangkok.jpg</a> by Slyronit, CC BY-SA 4.0</p>
+    <p>karonview: <a href="https://commons.wikimedia.org/wiki/File:Phuket_Aerial.jpg" target="_blank" rel="noopener">Phuket Aerial.jpg</a> by Bennypc, CC BY-SA 4.0</p>
+    <p>kata: <a href="https://commons.wikimedia.org/wiki/File:Phuket_-_Kata_Beach_001.jpg" target="_blank" rel="noopener">Phuket - Kata Beach 001.jpg</a> by ADwarf, Public domain</p>
+    <p>mayabay: <a href="https://commons.wikimedia.org/wiki/File:Playa_Maya,_Ko_Phi_Phi,_Tailandia,_2013-08-19,_DD_13.JPG" target="_blank" rel="noopener">Playa Maya, Ko Phi Phi, Tailandia, 2013-08-19, DD 13.JPG</a> by Diego Delso, CC BY-SA 3.0</p>
+    <p>phranang: <a href="https://commons.wikimedia.org/wiki/File:Phra_Nang_beach_28.jpg" target="_blank" rel="noopener">Phra_Nang_beach_28.jpg</a> by kallerna, CC BY-SA 3.0</p>
+    <p>pileh: <a href="https://commons.wikimedia.org/wiki/File:A_Long-tail_Boat_in_Pileh_Lagoon,_Phi_Phi_Le.jpg" target="_blank" rel="noopener">A Long-tail Boat in Pileh Lagoon, Phi Phi Le.jpg</a> by Puripant, CC BY-SA 4.0</p>
+    <p>promthep: <a href="https://commons.wikimedia.org/wiki/File:Beautiful_Sunset_on_Promthep_Cape,_Phuket_island,_Thailand.jpg" target="_blank" rel="noopener">Beautiful Sunset on Promthep Cape, Phuket island, Thailand.jpg</a> by Phuket@photographer.net, CC BY 2.0</p>
+    <p>railay: <a href="https://commons.wikimedia.org/wiki/File:Railay_Beach_5.jpg" target="_blank" rel="noopener">Railay Beach 5.jpg</a> by kallerna, CC BY-SA 3.0</p>
+    <p>sunset: <a href="https://commons.wikimedia.org/wiki/File:Ao_Nang_beach_5.jpg" target="_blank" rel="noopener">Ao_Nang_beach_5.jpg</a> by kallerna, CC BY-SA 3.0</p>
+    <p>tup: <a href="https://commons.wikimedia.org/wiki/File:2016-04-14_Tup_Island,_Krabi_Province_1.jpg" target="_blank" rel="noopener">2016-04-14 Tup Island, Krabi Province 1.jpg</a> by Maksym Kozlenko, CC BY-SA 4.0</p>
+    <p>watarun: <a href="https://commons.wikimedia.org/wiki/File:Templo_Wat_Arun,_Bangkok,_Tailandia,_2013-08-22,_DD_37.jpg" target="_blank" rel="noopener">Templo Wat Arun, Bangkok, Tailandia, 2013-08-22, DD 37.jpg</a> by Diego Delso, CC BY-SA 3.0</p>
+    <p>watpho: <a href="https://commons.wikimedia.org/wiki/File:Wat_Pho,_Bangkok,_Tailandia,_2013-08-22,_DD_06.jpg" target="_blank" rel="noopener">Wat Pho, Bangkok, Tailandia, 2013-08-22, DD 06.jpg</a> by Diego Delso, CC BY-SA 3.0</p>
+  </div>
+</section>
+<footer>
+  Updated 16 Nov 2026. Visa: Indian passport holders get 30 days visa-free for tourism from 15 Sep 2026, and the TDAC is required for all arrivals. Confirm with the Royal Thai Embassy before you travel. Flight times, hotel rates, tour prices and opening hours are estimates and change often, so confirm when you book.
+</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='th-honeymoon-checklist';
+  var boxes=[].slice.call(document.querySelectorAll('#checklist input[type=checkbox]'));
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){saved={};}
+  function update(){
+    var done=boxes.filter(function(b){return b.checked}).length;
+    document.getElementById('pc').textContent=done+' of '+boxes.length+' done';
+    document.getElementById('pb').style.width=(boxes.length?done/boxes.length*100:0)+'%';
+  }
+  boxes.forEach(function(b){
+    if(saved[b.id]) b.checked=true;
+    b.addEventListener('change',function(){
+      saved[b.id]=b.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}
+      update();
+    });
+  });
+  update();
+})();
+</script>
+
+</html>
