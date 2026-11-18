@@ -12,7 +12,7 @@
 /* Layout: one reading column; route strip; each day is a card holding an hourly timeline; tables scroll in their own boxes */
 :root{
   --bg:#f6f8f7; --surface:#ffffff; --fg:#14211f; --muted:#5b6b68; --line:#dbe3e1;
-  --accent:#0f7c74; --accent-soft:#e2f2ef; --sand:#9a6a1f; --sand-soft:#f6ecdb; --warn:#a4452c; --warn-soft:#f8e6df;
+  --accent:#0f7c74; --accent-soft:#e2f2ef; --sand:#82561a; --sand-soft:#f6ecdb; --warn:#a4452c; --warn-soft:#f8e6df;
   --night:#3d4a7a; --night-soft:#e8eaf5;
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -68,7 +68,7 @@ header{display:flex;flex-direction:column;gap:14px}
 .day-top h3 span{color:var(--muted);font-weight:500;font-size:.95rem;margin-left:6px}
 .sleepchip{font-size:.78rem;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--night-soft);color:var(--night);font-variant-numeric:tabular-nums;white-space:nowrap}
 .sched{display:flex;flex-direction:column}
-.r{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:16px;padding:7px 0 7px 10px;border-left:3px solid var(--line)}
+.r{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:16px;padding:7px 10px 7px 10px;border-left:3px solid var(--line)}
 .r + .r{border-top:1px solid var(--line)}
 .r time{font-variant-numeric:tabular-nums;font-weight:600;font-size:.88rem;line-height:1.4;padding-top:2px;overflow-wrap:anywhere}
 .r div{min-width:0}
@@ -148,7 +148,7 @@ td s{color:var(--muted)}
 .credits a{color:var(--muted)}
 
 /* agencies */
-:root{--wa:#128c4a;--wa-fg:#ffffff}
+:root{--wa:#0d7a3e;--wa-fg:#ffffff}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--wa:#25d366;--wa-fg:#06301a}}
 :root[data-theme="dark"]{--wa:#25d366;--wa-fg:#06301a}
 .ag-group{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
