@@ -166,6 +166,29 @@ td s{color:var(--muted)}
 .msg summary{cursor:pointer;font-weight:600}
 .msg pre{white-space:pre-wrap;font-family:var(--body);font-size:.9rem;background:var(--bg);border-radius:8px;padding:12px;margin:10px 0}
 .copy{font:inherit;font-weight:600;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--accent-soft);color:var(--fg);cursor:pointer}
+
+/* plan tabs */
+.ptabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.ptab{font:inherit;text-align:left;cursor:pointer;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.ptab b{font-family:var(--display);font-size:1.02rem}
+.ptab span{font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums}
+.ptab em{font-style:normal;font-size:.82rem;color:var(--muted)}
+.ptab[aria-selected="true"]{border:2px solid var(--accent);background:var(--accent-soft)}
+.ptab:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.ppanel{display:flex;flex-direction:column;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.ppanel h4{margin:0;font-family:var(--display);font-size:1.05rem}
+.phead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.phead p{margin:4px 0 0}
+.ptotal{text-align:right}
+.ptotal b{display:block;font-family:var(--display);font-size:1.6rem;color:var(--accent);font-variant-numeric:tabular-nums}
+.ptotal span{font-size:.8rem;color:var(--muted)}
+.proute{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.rchip{background:var(--accent-soft);border-radius:999px;padding:5px 12px;font-weight:600;font-size:.9rem}
+.rchip small{font-weight:500;color:var(--muted)}
+.rchip.bus{background:var(--night-soft);color:var(--night)}
+.pdays{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.pdays li{border-left:3px solid var(--line);padding:2px 0 2px 12px}
+.ppanel .card{background:var(--bg)}
 footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
 </style>
 
@@ -174,17 +197,17 @@ footer{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padd
 <header>
   <figure class="hero"><img src="img/hero.jpg" alt="Longtail boats in clear water in the Andaman Sea" width="1400" height="700"></figure>
   <span class="eyebrow">Honeymoon plan · 15–24 January 2027</span>
-  <h1>Phuket, Krabi &amp; Bangkok</h1>
-  <p class="intro muted">A relaxed, safe, vegetarian-friendly 9-day trip for two, around ₹2 lakh: a beach and a first scuba dive in Phuket, Tiger Cave Temple and Railay in Krabi, and Bangkok's palaces, temples and Ayutthaya. Planned hour by hour with at least 8 hours of sleep every night. You get dropped at and picked up from Mumbai airport, so that leg isn't counted in the cost.</p>
+  <h1>Thailand, 15–23 January</h1>
+  <p class="intro muted">A relaxed, safe, vegetarian-friendly honeymoon for two: a beach and a first scuba dive in Phuket, the White Temple in Chiang Rai or Tiger Cave Temple in Krabi, and Bangkok's palaces and Ayutthaya. Four plans to compare, all under ₹2.3 lakh. Planned hour by hour with at least 8 hours of sleep every night. You get dropped at and picked up from Mumbai airport, so that leg isn't counted in the cost.</p>
   <div class="facts">
-    <div class="fact"><b>9 days · 8 nights</b><span>Fri 15 Jan → Sat 23 Jan</span></div>
-    <div class="fact"><b>3 places</b><span>Phuket 3N · Krabi 2N · Bangkok 3N</span></div>
-    <div class="fact"><b>≈ ₹1.9 lakh</b><span>for two, all-in</span></div>
-    <div class="fact"><b>7 agencies</b><span>WhatsApp them for quotes below</span></div>
+    <div class="fact"><b>9–10 days</b><span>Fri 15 Jan → 23 or 24 Jan</span></div>
+    <div class="fact"><b>4 plans</b><span>Krabi, Chiang Rai, or both</span></div>
+    <div class="fact"><b>₹1.92–2.12 lakh</b><span>for two, all-in · cap ₹2.3 lakh</span></div>
+    <div class="fact"><b>8+ h sleep</b><span>every night in a bed</span></div>
   </div>
 </header>
 
-<section id="agencies">
+<section id="agencies" hidden>
   <h2>Get quotes from travel agencies</h2>
   <p class="intro">An agency can book your flights, hotels, airport pickups and drivers, and give you one number to call if anything goes wrong in Thailand. You keep the free time. Tap <b>Message on WhatsApp</b> to open a chat with a short message already typed: who you are, your dates, the cities and a budget of around ₹1.5–1.8 lakh. You can edit it before sending.</p>
   <details class="msg"><summary>See the message that will be sent</summary>
@@ -265,20 +288,66 @@ I&#x27;m looking for budget-friendly options, around ₹1.5–1.8 lakh for both 
   </div>
 </section>
 
-<section>
-  <h2>The route</h2>
-  <div class="route">
-    <div class="stop"><small>Fri 15 Jan</small><strong>Mumbai</strong><em>BOM · Terminal 2</em></div>
-    <span class="arrow" aria-hidden="true">→</span>
-    <div class="stop stay"><small>15–18 Jan</small><strong>Phuket</strong><em>3 nights · Kata</em></div>
-    <span class="arrow" aria-hidden="true">→</span>
-    <div class="stop stay"><small>18–20 Jan</small><strong>Krabi</strong><em>2 nights · Ao Nang</em></div>
-    <span class="arrow" aria-hidden="true">→</span>
-    <div class="stop stay"><small>20–23 Jan</small><strong>Bangkok</strong><em>3 nights · Sukhumvit</em></div>
-    <span class="arrow" aria-hidden="true">→</span>
-    <div class="stop"><small>Sat 23 Jan, night</small><strong>Mumbai</strong><em>Pickup at BOM</em></div>
+<section id="plans">
+  <h2>Choose a plan</h2>
+  <p class="intro">Four ways to do 15–23/24 January, all under a hard cap of <b>₹2.3 lakh for two</b>, scuba included. Flight prices are real fares from Google Flights for these dates; hotels, food and buses are estimates. Tap a plan to see its days and costs.</p>
+  <div class="ptabs" role="tablist" aria-label="Trip plans"><button type="button" role="tab" class="ptab" id="tab-plan-a" aria-controls="plan-a" aria-selected="false"><b>Plan A · Krabi</b><span>₹1.92 lakh</span><em>Cheapest and most relaxed</em></button><button type="button" role="tab" class="ptab" id="tab-plan-b" aria-controls="plan-b" aria-selected="true"><b>Plan B · Chiang Rai by air</b><span>₹2.10 lakh</span><em>Best balance: temples and comfort</em></button><button type="button" role="tab" class="ptab" id="tab-plan-c" aria-controls="plan-c" aria-selected="false"><b>Plan C · Chiang Rai + night bus</b><span>₹2.00 lakh</span><em>Chiang Rai for less</em></button><button type="button" role="tab" class="ptab" id="tab-plan-d" aria-controls="plan-d" aria-selected="false"><b>Plan D · Krabi and Chiang Rai</b><span>₹2.12 lakh</span><em>See everything, busiest</em></button></div>
+  <div class="ppanel" role="tabpanel" id="plan-a" aria-labelledby="tab-plan-a" hidden>
+    <div class="phead"><div><h3>Plan A · Krabi</h3><p class="muted">Cheapest and most relaxed · 9 days · 8 nights · 15–23 Jan</p></div><div class="ptotal"><b>₹1.92 lakh</b><span>for two, all-in</span></div></div>
+    <div class="proute"><span class="rchip">Phuket <small>3N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip">Krabi <small>2N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip">Bangkok <small>3N</small></span></div>
+    <div class="two"><div class="card"><h4>Good</h4><ul><li>Lowest cost, no early flights or night travel</li><li>Tiger Cave Temple, Railay Beach and a scenic island ferry</li><li>Full Bangkok days with Ayutthaya</li></ul></div><div class="card"><h4>Trade-offs</h4><ul><li>No White Temple or Chiang Rai</li><li>More beach than heritage</li></ul></div></div>
+    <h4>Day by day</h4>
+    <ol class="pdays"><li><b>Day 1</b> <span class="muted">Fri 15 Jan</span><br>IndiGo nonstop Mumbai → Phuket 1:15 pm IST, lands 7:15 pm. Kata Beach hotel by 9:30 pm.</li><li><b>Day 2</b> <span class="muted">Sat 16 Jan</span><br>Discover Scuba at Racha Yai island, 7:30 am – 5 pm. Sunset walk on Kata Beach.</li><li><b>Day 3</b> <span class="muted">Sun 17 Jan</span><br>Wat Chalong 9:30 am, Big Buddha 11:20 am, rest, Phuket Old Town and Sunday night market 4:45 – 8 pm.</li><li><b>Day 4</b> <span class="muted">Mon 18 Jan</span><br>Ferry Phuket → Ao Nang 8:30 am – 12 pm through the islands. Beach and sunset.</li><li><b>Day 5</b> <span class="muted">Tue 19 Jan</span><br>Tiger Cave Temple climb 7:15 am (1,260 steps), Railay Beach and Phra Nang Cave Beach in the afternoon.</li><li><b>Day 6</b> <span class="muted">Wed 20 Jan</span><br>Beach morning. AirAsia Krabi → Bangkok 4:45 pm, Sukhumvit by 7:45 pm.</li><li><b>Day 7</b> <span class="muted">Thu 21 Jan</span><br>Grand Palace 8:30 am, Wat Pho 11 am, Wat Arun 12:10 pm, Khon dance 2:30 pm, Sri Maha Mariamman 6:15 pm.</li><li><b>Day 8</b> <span class="muted">Fri 22 Jan</span><br>Ayutthaya by train, 8 am – 6 pm: Wat Mahathat, Wat Phra Si Sanphet, Wat Chaiwatthanaram.</li><li><b>Day 9</b> <span class="muted">Sat 23 Jan</span><br>Chatuchak Weekend Market 9 am, Erawan Shrine 3:45 pm. VietJet Bangkok → Mumbai 8:40 pm, lands 11:50 pm.</li></ol>
+    <h4>Cost for two</h4>
+    <div class="tbl"><table><thead><tr><th>Item</th><th>Details</th><th class="num">Cost</th></tr></thead><tbody><tr><td>Flights + ferry, with bags</td><td class="small muted">Mumbai → Phuket ₹29,854 · ferry ≈ ₹4,000 · Krabi → Bangkok ₹9,721 · Bangkok → Mumbai ₹28,895</td><td class="num">₹77,000</td></tr><tr><td>Hotels, 8 nights</td><td class="small muted">≈ ₹4,000 a night</td><td class="num">₹32,000</td></tr><tr><td>Vegetarian food</td><td class="small muted">9 days</td><td class="num">₹22,000</td></tr><tr><td>Scuba for two</td><td class="small muted"></td><td class="num">₹19,000</td></tr><tr><td>Grab, Skytrain, airport rides</td><td class="small muted"></td><td class="num">₹14,000</td></tr><tr><td>Temples, show, boats</td><td class="small muted"></td><td class="num">₹7,500</td></tr><tr><td>Ayutthaya train + tuk-tuk</td><td class="small muted"></td><td class="num">₹4,500</td></tr><tr><td>Insurance, eSIM, tips</td><td class="small muted"></td><td class="num">₹7,000</td></tr><tr><td>Buffer</td><td class="small muted"></td><td class="num">₹9,000</td></tr><tr class="total"><td>Total</td><td class="small">Under the ₹2.3 lakh cap · shopping not included</td><td class="num">₹1,92,000</td></tr></tbody></table></div>
   </div>
-  <p class="small muted">Phuket → Krabi by ferry (about 2 hours), Krabi → Bangkok by a 1h 25m flight. Times are <b>Thailand time</b> (1h 30m ahead of India) unless marked IST, and match real flights on sale now.</p>
+  <div class="ppanel" role="tabpanel" id="plan-b" aria-labelledby="tab-plan-b">
+    <div class="phead"><div><h3>Plan B · Chiang Rai by air</h3><p class="muted">Best balance: temples and comfort · 9 days · 8 nights · 15–23 Jan</p></div><div class="ptotal"><b>₹2.10 lakh</b><span>for two, all-in</span></div></div>
+    <div class="proute"><span class="rchip">Phuket <small>3N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip">Chiang Rai <small>2N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip">Bangkok <small>3N</small></span></div>
+    <div class="two"><div class="card"><h4>Good</h4><ul><li>White Temple, Blue Temple, Black House</li><li>Ancient Chiang Saen and the Golden Triangle</li><li>Every night in a proper bed</li></ul></div><div class="card"><h4>Trade-offs</h4><ul><li>One very early start (8:30 am flight from Phuket)</li><li>Two extra flights cost more than Plan A</li><li>No Krabi</li></ul></div></div>
+    <h4>Day by day</h4>
+    <ol class="pdays"><li><b>Day 1</b> <span class="muted">Fri 15 Jan</span><br>IndiGo nonstop Mumbai → Phuket 1:15 pm IST, lands 7:15 pm. Kata Beach hotel by 9:30 pm.</li><li><b>Day 2</b> <span class="muted">Sat 16 Jan</span><br>Discover Scuba at Racha Yai island, 7:30 am – 5 pm. Sunset walk on Kata Beach.</li><li><b>Day 3</b> <span class="muted">Sun 17 Jan</span><br>Wat Chalong 9:30 am, Big Buddha 11:20 am, rest, Phuket Old Town and Sunday night market 4:45 – 8 pm. Early night.</li><li><b>Day 4</b> <span class="muted">Mon 18 Jan</span><br>VietJet nonstop Phuket → Chiang Rai 8:30 am. Nap, Blue Temple 3:30 pm, Wat Huay Pla Kang at sunset, Clock Tower light show 7 pm.</li><li><b>Day 5</b> <span class="muted">Tue 19 Jan</span><br>White Temple 8 am (before the crowds), Black House 10:30 am, rest, Wat Phra Kaew Chiang Rai 3:45 pm.</li><li><b>Day 6</b> <span class="muted">Wed 20 Jan</span><br>Car and driver to ancient Chiang Saen 8:45 am and the Golden Triangle 10:15 am. AirAsia Chiang Rai → Bangkok 6:40 pm.</li><li><b>Day 7</b> <span class="muted">Thu 21 Jan</span><br>Grand Palace 8:30 am, Wat Pho 11 am, Wat Arun 12:10 pm, Khon dance 2:30 pm, Sri Maha Mariamman 6:15 pm.</li><li><b>Day 8</b> <span class="muted">Fri 22 Jan</span><br>Ayutthaya by train, 8 am – 6 pm: Wat Mahathat, Wat Phra Si Sanphet, Wat Chaiwatthanaram.</li><li><b>Day 9</b> <span class="muted">Sat 23 Jan</span><br>Chatuchak Weekend Market 9 am, Erawan Shrine 3:45 pm. VietJet Bangkok → Mumbai 8:40 pm, lands 11:50 pm.</li></ol>
+    <h4>Cost for two</h4>
+    <div class="tbl"><table><thead><tr><th>Item</th><th>Details</th><th class="num">Cost</th></tr></thead><tbody><tr><td>Flights, with bags</td><td class="small muted">Mumbai → Phuket ₹29,854 · Phuket → Chiang Rai ₹11,802 · Chiang Rai → Bangkok ₹8,621 · Bangkok → Mumbai ₹28,895</td><td class="num">₹86,000</td></tr><tr><td>Hotels, 8 nights</td><td class="small muted">Chiang Rai is cheaper, ≈ ₹3,000 a night</td><td class="num">₹31,500</td></tr><tr><td>Vegetarian food</td><td class="small muted">9 days</td><td class="num">₹22,000</td></tr><tr><td>Scuba for two</td><td class="small muted"></td><td class="num">₹19,000</td></tr><tr><td>Grab, Skytrain, airport rides</td><td class="small muted"></td><td class="num">₹15,000</td></tr><tr><td>Temples, show</td><td class="small muted">Incl. White Temple 200 THB each</td><td class="num">₹8,000</td></tr><tr><td>Chiang Saen car and driver</td><td class="small muted">≈ 2,800 THB</td><td class="num">₹7,500</td></tr><tr><td>Ayutthaya train + tuk-tuk</td><td class="small muted"></td><td class="num">₹4,500</td></tr><tr><td>Insurance, eSIM, tips</td><td class="small muted"></td><td class="num">₹7,000</td></tr><tr><td>Buffer</td><td class="small muted"></td><td class="num">₹9,000</td></tr><tr class="total"><td>Total</td><td class="small">Under the ₹2.3 lakh cap · shopping not included</td><td class="num">₹2,09,500</td></tr></tbody></table></div>
+  </div>
+  <div class="ppanel" role="tabpanel" id="plan-c" aria-labelledby="tab-plan-c" hidden>
+    <div class="phead"><div><h3>Plan C · Chiang Rai + night bus</h3><p class="muted">Chiang Rai for less · 9 days · 7 nights + 1 on the bus · 15–23 Jan</p></div><div class="ptotal"><b>₹2.00 lakh</b><span>for two, all-in</span></div></div>
+    <div class="proute"><span class="rchip">Phuket <small>3N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip">Chiang Rai <small>2N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip bus">Night bus <small>1N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip">Bangkok <small>2N</small></span></div>
+    <div class="two"><div class="card"><h4>Good</h4><ul><li>Same temples as Plan B for ≈ ₹10k less</li><li>The bus replaces a flight and a hotel night</li></ul></div><div class="card"><h4>Trade-offs</h4><ul><li>A 12-hour night on a VIP bus: less sleep</li><li>Day 7 starts tired, so Bangkok gets a slower day</li></ul></div></div>
+    <h4>Day by day</h4>
+    <ol class="pdays"><li><b>Day 1</b> <span class="muted">Fri 15 Jan</span><br>IndiGo nonstop Mumbai → Phuket 1:15 pm IST, lands 7:15 pm. Kata Beach hotel by 9:30 pm.</li><li><b>Day 2</b> <span class="muted">Sat 16 Jan</span><br>Discover Scuba at Racha Yai island, 7:30 am – 5 pm. Sunset walk on Kata Beach.</li><li><b>Day 3</b> <span class="muted">Sun 17 Jan</span><br>Wat Chalong 9:30 am, Big Buddha 11:20 am, rest, Phuket Old Town and Sunday night market 4:45 – 8 pm. Early night.</li><li><b>Day 4</b> <span class="muted">Mon 18 Jan</span><br>VietJet nonstop Phuket → Chiang Rai 8:30 am. Nap, Blue Temple 3:30 pm, Wat Huay Pla Kang at sunset, Clock Tower light show 7 pm.</li><li><b>Day 5</b> <span class="muted">Tue 19 Jan</span><br>White Temple 8 am (before the crowds), Black House 10:30 am, rest, Wat Phra Kaew Chiang Rai 3:45 pm.</li><li><b>Day 6</b> <span class="muted">Wed 20 Jan</span><br>Chiang Saen and Golden Triangle by car, back by 5 pm. Dinner, then ≈ 7 pm VIP overnight bus to Bangkok (about 12 h, reclining seats, toilet on board).</li><li><b>Day 7</b> <span class="muted">Thu 21 Jan</span><br>Arrive Mo Chit ≈ 7 am. Hotel early check-in and nap. Grand Palace 12:30 pm, Wat Pho 2:45 pm, Khon dance 4 pm.</li><li><b>Day 8</b> <span class="muted">Fri 22 Jan</span><br>Ayutthaya by train, 8 am – 6 pm: Wat Mahathat, Wat Phra Si Sanphet, Wat Chaiwatthanaram.</li><li><b>Day 9</b> <span class="muted">Sat 23 Jan</span><br>Wat Arun 8:30 am, Chatuchak Weekend Market 10:30 am, Erawan Shrine 3:45 pm. VietJet Bangkok → Mumbai 8:40 pm.</li></ol>
+    <h4>Cost for two</h4>
+    <div class="tbl"><table><thead><tr><th>Item</th><th>Details</th><th class="num">Cost</th></tr></thead><tbody><tr><td>Flights, with bags</td><td class="small muted">Mumbai → Phuket ₹29,854 · Phuket → Chiang Rai ₹11,802 · Bangkok → Mumbai ₹28,895</td><td class="num">₹75,000</td></tr><tr><td>VIP night bus Chiang Rai → Bangkok</td><td class="small muted">≈ 1,050 THB each</td><td class="num">₹5,500</td></tr><tr><td>Hotels, 7 nights + early check-in</td><td class="small muted"></td><td class="num">₹28,500</td></tr><tr><td>Vegetarian food</td><td class="small muted">9 days</td><td class="num">₹22,000</td></tr><tr><td>Scuba for two</td><td class="small muted"></td><td class="num">₹19,000</td></tr><tr><td>Grab, Skytrain, airport rides</td><td class="small muted"></td><td class="num">₹14,000</td></tr><tr><td>Temples, show</td><td class="small muted"></td><td class="num">₹8,000</td></tr><tr><td>Chiang Saen car and driver</td><td class="small muted"></td><td class="num">₹7,500</td></tr><tr><td>Ayutthaya train + tuk-tuk</td><td class="small muted"></td><td class="num">₹4,500</td></tr><tr><td>Insurance, eSIM, tips</td><td class="small muted"></td><td class="num">₹7,000</td></tr><tr><td>Buffer</td><td class="small muted"></td><td class="num">₹9,000</td></tr><tr class="total"><td>Total</td><td class="small">Under the ₹2.3 lakh cap · shopping not included</td><td class="num">₹2,00,000</td></tr></tbody></table></div>
+  </div>
+  <div class="ppanel" role="tabpanel" id="plan-d" aria-labelledby="tab-plan-d" hidden>
+    <div class="phead"><div><h3>Plan D · Krabi and Chiang Rai</h3><p class="muted">See everything, busiest · 10 days · 8 nights + 1 on the bus · 15–24 Jan</p></div><div class="ptotal"><b>₹2.12 lakh</b><span>for two, all-in</span></div></div>
+    <div class="proute"><span class="rchip">Phuket <small>3N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip">Krabi <small>2N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip">Chiang Rai <small>2N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip bus">Night bus <small>1N</small></span><span class="arrow" aria-hidden="true">→</span><span class="rchip">Bangkok <small>1N</small></span></div>
+    <div class="two"><div class="card"><h4>Good</h4><ul><li>Beach, Tiger Cave, Railay and the White Temple in one trip</li><li>One extra day (home on Sun 24 Jan)</li></ul></div><div class="card"><h4>Trade-offs</h4><ul><li>Four bases and a 7-hour flight via Bangkok: lots of packing</li><li>Only one night in Bangkok; no Ayutthaya</li><li>A night on the bus</li></ul></div></div>
+    <h4>Day by day</h4>
+    <ol class="pdays"><li><b>Day 1</b> <span class="muted">Fri 15 Jan</span><br>IndiGo nonstop Mumbai → Phuket 1:15 pm IST, lands 7:15 pm. Kata Beach hotel by 9:30 pm.</li><li><b>Day 2</b> <span class="muted">Sat 16 Jan</span><br>Discover Scuba at Racha Yai island, 7:30 am – 5 pm. Sunset walk on Kata Beach.</li><li><b>Day 3</b> <span class="muted">Sun 17 Jan</span><br>Wat Chalong 9:30 am, Big Buddha 11:20 am, rest, Phuket Old Town and Sunday night market 4:45 – 8 pm.</li><li><b>Day 4</b> <span class="muted">Mon 18 Jan</span><br>Ferry Phuket → Ao Nang 8:30 am – 12 pm. Beach and sunset.</li><li><b>Day 5</b> <span class="muted">Tue 19 Jan</span><br>Tiger Cave Temple 7:15 am, Railay Beach in the afternoon.</li><li><b>Day 6</b> <span class="muted">Wed 20 Jan</span><br>Nok Air Krabi → Chiang Rai 11:35 am via Bangkok, lands 6:45 pm. Clock Tower light show 8 pm.</li><li><b>Day 7</b> <span class="muted">Thu 21 Jan</span><br>White Temple 8 am, Black House 10:30 am, rest, Blue Temple 3:30 pm, Wat Huay Pla Kang at sunset.</li><li><b>Day 8</b> <span class="muted">Fri 22 Jan</span><br>Chiang Saen and Golden Triangle by car. ≈ 7 pm VIP overnight bus to Bangkok.</li><li><b>Day 9</b> <span class="muted">Sat 23 Jan</span><br>Arrive ≈ 7 am, early check-in and nap. Grand Palace 12:30 pm, Wat Pho, Wat Arun at sunset.</li><li><b>Day 10</b> <span class="muted">Sun 24 Jan</span><br>Chatuchak Weekend Market 9 am, Erawan Shrine 2 pm. VietJet Bangkok → Mumbai 8:40 pm.</li></ol>
+    <h4>Cost for two</h4>
+    <div class="tbl"><table><thead><tr><th>Item</th><th>Details</th><th class="num">Cost</th></tr></thead><tbody><tr><td>Flights, with bags</td><td class="small muted">Mumbai → Phuket ₹29,854 · Krabi → Chiang Rai ₹14,749 · Bangkok → Mumbai (24 Jan) ₹31,316</td><td class="num">₹80,500</td></tr><tr><td>Ferry + VIP night bus</td><td class="small muted"></td><td class="num">₹9,500</td></tr><tr><td>Hotels, 8 nights + early check-in</td><td class="small muted"></td><td class="num">₹32,000</td></tr><tr><td>Vegetarian food</td><td class="small muted">10 days</td><td class="num">₹24,000</td></tr><tr><td>Scuba for two</td><td class="small muted"></td><td class="num">₹19,000</td></tr><tr><td>Grab, Skytrain, airport rides</td><td class="small muted"></td><td class="num">₹15,000</td></tr><tr><td>Temples, boats</td><td class="small muted"></td><td class="num">₹7,500</td></tr><tr><td>Chiang Saen car and driver</td><td class="small muted"></td><td class="num">₹7,500</td></tr><tr><td>Insurance, eSIM, tips</td><td class="small muted"></td><td class="num">₹7,500</td></tr><tr><td>Buffer</td><td class="small muted"></td><td class="num">₹9,000</td></tr><tr class="total"><td>Total</td><td class="small">Under the ₹2.3 lakh cap · shopping not included</td><td class="num">₹2,11,500</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section>
+  <h2>Getting between places</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Leg</th><th>Best option</th><th>Time</th><th class="num">For two</th></tr></thead>
+    <tbody>
+      <tr><td>Mumbai → Phuket, 15 Jan</td><td>IndiGo nonstop 1:15 pm</td><td>4h 30m</td><td class="num">₹29,854</td></tr>
+      <tr><td>Phuket → Krabi (Ao Nang)</td><td>Ferry with hotel pickup · minivan ≈ ₹2,000</td><td>2–2.5 h</td><td class="num">≈ ₹4,000</td></tr>
+      <tr><td>Phuket → Chiang Rai, 18 Jan</td><td>Thai VietJet nonstop 8:30 am · the bus takes 26 h and costs more</td><td>2 h</td><td class="num">₹11,802</td></tr>
+      <tr><td>Krabi → Chiang Rai, 20 Jan</td><td>Nok Air via Bangkok 11:35 am (no nonstop)</td><td>7 h</td><td class="num">₹14,749</td></tr>
+      <tr><td>Krabi → Bangkok, 20 Jan</td><td>Thai AirAsia nonstop 4:45 pm · 7:45 pm: ₹8,675</td><td>1h 25m</td><td class="num">₹9,721</td></tr>
+      <tr><td>Chiang Rai → Bangkok, 20 Jan</td><td>Thai AirAsia nonstop 6:40 pm</td><td>1h 15m</td><td class="num">₹8,621</td></tr>
+      <tr><td>Chiang Rai → Bangkok, night bus</td><td>VIP 24-seat overnight bus (e.g. Green Bus, Sombat Tour); book on 12Go or at Bus Terminal 2</td><td>≈ 12 h</td><td class="num">≈ ₹5,500</td></tr>
+      <tr><td>Bangkok → Mumbai, 23 Jan</td><td>Thai VietJet nonstop 8:40 pm · IndiGo 8:20 am ₹30,601</td><td>4h 40m</td><td class="num">₹28,895</td></tr>
+      <tr><td>Bangkok → Mumbai, 24 Jan</td><td>Thai VietJet nonstop 8:40 pm</td><td>4h 40m</td><td class="num">₹31,316</td></tr>
+      <tr><td>Bangkok → Pune, 23 Jan</td><td>Air India Express nonstop 1:50 pm, lands 5 pm</td><td>4h 40m</td><td class="num">₹35,865</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">Flight prices from Google Flights, 18–24 Nov 2026, for 2 adults with taxes. VietJet, AirAsia and Nok fares don't include checked bags (≈ ₹1,500–2,500 per bag per flight). Bus fares are from booking sites, not the operators.</p>
 </section>
 
 <section>
@@ -292,7 +361,7 @@ I&#x27;m looking for budget-friendly options, around ₹1.5–1.8 lakh for both 
     </ul></div>
     <div class="card"><h3>Before you book</h3><ul>
       <li>You fill in a medical form. Asthma, heart or ear problems, a cold, or pregnancy can rule out diving, so check with a doctor first.</li>
-      <li><b>No flying for 18–24 hours after diving.</b> Your next flight is 4 days later.</li>
+      <li><b>No flying for 18–24 hours after diving.</b> Every plan leaves at least 2 days before the next flight.</li>
       <li>Many Indian travel policies <b>exclude scuba</b>; buy the add-on.</li>
       <li>If only one of you dives, the other can snorkel on the same boat for ≈ 1,500 THB.</li>
     </ul></div>
@@ -300,7 +369,8 @@ I&#x27;m looking for budget-friendly options, around ₹1.5–1.8 lakh for both 
 </section>
 
 <section>
-  <h2>Hour-by-hour plan</h2>
+  <h2>Hour-by-hour: Plan A (Krabi)</h2>
+  <p class="intro">The full timed schedule for Plan A. The other plans follow the same rhythm: an easy first evening, early starts for temples, a rest in the afternoon heat and at least 8 hours of sleep.</p>
   <div class="legend">
     <span><i style="background:var(--night)"></i>Sleep</span>
     <span><i style="background:var(--sand)"></i>Meal</span>
@@ -476,64 +546,18 @@ I&#x27;m looking for budget-friendly options, around ₹1.5–1.8 lakh for both 
 
 <section>
   <h2>Where to stay</h2>
-  <p class="small muted">Aim for about <b>₹4,000 a night on average</b>, breakfast included. On Agoda or Booking, filter for 3-star, rating 8+, breakfast and free cancellation, and check the final price includes the ~17% service charge and VAT that Thai hotels often add (“++”).</p>
+  <p class="small muted">Aim for about <b>₹4,000 a night</b> (≈ ₹3,000 in Chiang Rai), breakfast included. On Agoda or Booking, filter for 3-star, rating 8+, breakfast and free cancellation, and check the final price includes the ~17% service charge and VAT (“++”).</p>
   <div class="hotels">
-    <div class="hotel"><span class="city">Phuket · 3 nights</span><h3>Sugar Marina Resort – Art, Kata</h3><span class="price">≈ ₹3.5–5k / night</span>
-      <p class="small">Good value, a short walk to Kata Beach. Dive shops pick up here.</p>
-      <p class="alt">Or any 8+ rated 3-star in Kata or Karon.</p></div>
-    <div class="hotel"><span class="city">Krabi · 2 nights</span><h3>BlueSotel SMART Krabi Aonang</h3><span class="price">≈ ₹3.5–4.5k / night</span>
-      <p class="small">Adults only, close to Ao Nang's beach, longtail boats and Indian restaurants.</p>
-      <p class="alt">Or any 8+ rated 3-star near Ao Nang beach.</p></div>
-    <div class="hotel"><span class="city">Bangkok · 3 nights</span><h3>Holiday Inn Express Sukhumvit 11</h3><span class="price">≈ ₹4–5.5k / night</span>
-      <p class="small">Breakfast included. On the street with the most Indian veg restaurants, near Nana Skytrain station.</p>
-      <p class="alt">If it's over budget: any 8+ rated 3-star near Nana or Asok BTS.</p></div>
+    <div class="hotel"><span class="city">Phuket</span><h3>Sugar Marina Resort – Art, Kata</h3><span class="price">≈ ₹3.5–5k / night</span><p class="small">Short walk to Kata Beach; dive shops pick up here.</p></div>
+    <div class="hotel"><span class="city">Krabi (Plans A, D)</span><h3>BlueSotel SMART Krabi Aonang</h3><span class="price">≈ ₹3.5–4.5k / night</span><p class="small">Adults only, near Ao Nang beach and the longtail boats.</p></div>
+    <div class="hotel"><span class="city">Chiang Rai (Plans B, C, D)</span><h3>Le Patta Hotel Chiang Rai</h3><span class="price">≈ ₹3–4k / night</span><p class="small">Central, walking distance to the Clock Tower and Night Bazaar.</p></div>
+    <div class="hotel"><span class="city">Bangkok</span><h3>Holiday Inn Express Sukhumvit 11</h3><span class="price">≈ ₹4–5.5k / night</span><p class="small">Breakfast included, Indian veg restaurants on the street, near Nana BTS. Or any 8+ rated 3-star near Nana or Asok.</p></div>
   </div>
 </section>
 
 <section>
-  <h2>Budget for two: around ₹2 lakh</h2>
-  <p class="intro">Trimmed to fit: 8 nights instead of 9, Krabi instead of Chiang Rai (a ferry instead of two flights), the train to Ayutthaya instead of a private car, and simpler hotels. Flight prices are real fares from Google Flights.</p>
-  <div class="tbl"><table>
-    <thead><tr><th>Item</th><th>Notes</th><th class="num">Cost</th></tr></thead>
-    <tbody>
-      <tr><td>Flights &amp; ferry</td><td>Mumbai → Phuket, ferry to Krabi, Krabi → Bangkok, Bangkok → Mumbai, with checked bags</td><td class="num">₹77,000</td></tr>
-      <tr><td>Hotels, 8 nights</td><td>≈ ₹4,000 a night with breakfast and taxes</td><td class="num">₹32,000</td></tr>
-      <tr><td>Vegetarian lunch &amp; dinner</td><td>≈ 950 THB a day for two</td><td class="num">₹22,000</td></tr>
-      <tr><td>Scuba for two</td><td>Discover Scuba, 2 dives each</td><td class="num">₹19,000</td></tr>
-      <tr><td>Grab, Skytrain, airport rides</td><td></td><td class="num">₹14,000</td></tr>
-      <tr><td>Temples, show &amp; boats</td><td>Grand Palace with Khon, Wat Pho, Wat Arun, Ayutthaya temples, Railay longtail. Wat Chalong, Big Buddha, Tiger Cave and Erawan Shrine are free</td><td class="num">₹7,500</td></tr>
-      <tr><td>Ayutthaya train &amp; tuk-tuk</td><td></td><td class="num">₹4,500</td></tr>
-      <tr><td>Insurance with dive cover, eSIM, tips</td><td></td><td class="num">₹7,000</td></tr>
-      <tr><td>Small buffer</td><td>For price changes</td><td class="num">₹9,000</td></tr>
-      <tr class="total"><td>Total</td><td>Shopping not included</td><td class="num">≈ ₹1.92 L</td></tr>
-    </tbody>
-  </table></div>
-  <div class="card"><h3>To go lower</h3><ul>
-    <li><b>Only one of you dives</b>, the other snorkels: saves ≈ ₹9,500.</li>
-    <li><b>Shared minivan</b> instead of the ferry to Krabi: saves ≈ ₹2,000.</li>
-    <li><b>7:45 pm flight</b> from Krabi instead of 4:45 pm: saves ≈ ₹1,000.</li>
-    <li>Book flights and hotels <b>this month</b>; January prices only go up.</li>
-  </ul></div>
-</section>
-
-<section>
-  <h2>Flight prices for two</h2>
-  <div class="tbl"><table>
-    <thead><tr><th>Leg</th><th>Best option found</th><th class="num">Both of you</th></tr></thead>
-    <tbody>
-      <tr><td>Mumbai → Phuket<br><span class="small muted">Fri 15 Jan</span></td><td>IndiGo nonstop, 1:15 → 7:15 pm<br><span class="small muted">From Pune there's no nonstop; the cheapest goes via Bengaluru and arrives the next day</span></td><td class="num">₹29,854</td></tr>
-      <tr><td>Phuket → Krabi<br><span class="small muted">Mon 18 Jan</span></td><td>Ferry with hotel pickup, about 2–2.5 h<br><span class="small muted">Shared minivan ≈ ₹2,000</span></td><td class="num">≈ ₹4,000</td></tr>
-      <tr><td>Krabi → Bangkok<br><span class="small muted">Wed 20 Jan</span></td><td>Thai AirAsia nonstop, 4:45 → 6:10 pm (DMK)<br><span class="small muted">7:45 pm AirAsia: ₹8,675</span></td><td class="num">₹9,721</td></tr>
-      <tr><td>Bangkok → Mumbai<br><span class="small muted">Sat 23 Jan</span></td><td>Thai VietJet nonstop, 8:40 → 11:50 pm<br><span class="small muted">IndiGo 8:20 am: ₹30,601 · To Pune: Air India Express nonstop 1:50 → 5:00 pm, ₹35,865</span></td><td class="num">₹28,895</td></tr>
-      <tr class="total"><td>Total</td><td>Plus ≈ ₹4,500 for checked bags on AirAsia and VietJet</td><td class="num">≈ ₹72,500</td></tr>
-    </tbody>
-  </table></div>
-  <p class="small muted">Prices from Google Flights (18–24 Nov 2026), including taxes, for 2 adults. Fares change daily; book soon.</p>
-</section>
-
-<section>
   <h2>Places you'll see</h2>
-  <p class="small muted">More photos of each place: use the "Photos ↗" links in the day plan.</p>
+  <p class="small muted">Which ones depend on the plan. More photos: the "Photos ↗" links in the hour-by-hour plan.</p>
   <div class="gallery">
     <figure class="tile"><img src="img/kata.jpg" alt="Kata Beach" loading="lazy" width="640" height="440"><figcaption><small>Phuket</small>Kata Beach</figcaption></figure>
     <figure class="tile"><img src="img/scuba.jpg" alt="Discover Scuba" loading="lazy" width="640" height="440"><figcaption><small>Phuket</small>Discover Scuba</figcaption></figure>
@@ -544,6 +568,13 @@ I&#x27;m looking for budget-friendly options, around ₹1.5–1.8 lakh for both 
     <figure class="tile"><img src="img/tigercave.jpg" alt="Tiger Cave Temple" loading="lazy" width="640" height="440"><figcaption><small>Krabi</small>Tiger Cave Temple</figcaption></figure>
     <figure class="tile"><img src="img/railay.jpg" alt="Railay Beach" loading="lazy" width="640" height="440"><figcaption><small>Krabi</small>Railay Beach</figcaption></figure>
     <figure class="tile"><img src="img/phranang.jpg" alt="Phra Nang Cave Beach" loading="lazy" width="640" height="440"><figcaption><small>Krabi</small>Phra Nang Cave Beach</figcaption></figure>
+    <figure class="tile"><img src="img/whitetemple.jpg" alt="White Temple (Wat Rong Khun)" loading="lazy" width="640" height="440"><figcaption><small>Chiang Rai</small>White Temple (Wat Rong Khun)</figcaption></figure>
+    <figure class="tile"><img src="img/blackhouse.jpg" alt="Black House (Baan Dam)" loading="lazy" width="640" height="440"><figcaption><small>Chiang Rai</small>Black House (Baan Dam)</figcaption></figure>
+    <figure class="tile"><img src="img/bluetemple.jpg" alt="Blue Temple" loading="lazy" width="640" height="440"><figcaption><small>Chiang Rai</small>Blue Temple</figcaption></figure>
+    <figure class="tile"><img src="img/huayplakang.jpg" alt="Wat Huay Pla Kang" loading="lazy" width="640" height="440"><figcaption><small>Chiang Rai</small>Wat Huay Pla Kang</figcaption></figure>
+    <figure class="tile"><img src="img/clocktower.jpg" alt="Chiang Rai Clock Tower" loading="lazy" width="640" height="440"><figcaption><small>Chiang Rai</small>Chiang Rai Clock Tower</figcaption></figure>
+    <figure class="tile"><img src="img/watpasak.jpg" alt="Wat Pa Sak, Chiang Saen" loading="lazy" width="640" height="440"><figcaption><small>Chiang Saen</small>Wat Pa Sak, Chiang Saen</figcaption></figure>
+    <figure class="tile"><img src="img/goldentriangle.jpg" alt="Golden Triangle, Mekong" loading="lazy" width="640" height="440"><figcaption><small>Golden Triangle</small>Golden Triangle, Mekong</figcaption></figure>
     <figure class="tile"><img src="img/grandpalace.jpg" alt="Grand Palace" loading="lazy" width="640" height="440"><figcaption><small>Bangkok</small>Grand Palace</figcaption></figure>
     <figure class="tile"><img src="img/murals.jpg" alt="Palace murals" loading="lazy" width="640" height="440"><figcaption><small>Bangkok</small>Palace murals</figcaption></figure>
     <figure class="tile"><img src="img/watpho.jpg" alt="Wat Pho" loading="lazy" width="640" height="440"><figcaption><small>Bangkok</small>Wat Pho</figcaption></figure>
@@ -604,8 +635,8 @@ I&#x27;m looking for budget-friendly options, around ₹1.5–1.8 lakh for both 
   <div id="checklist">
     <div class="check-group"><h3>Now · by 30 Nov 2026</h3>
       <label class="ck"><input type="checkbox" id="c1"><span>Check both passports are valid until at least <b>mid-July 2027</b> (6 months after entry) and have 2 blank pages.</span></label>
-      <label class="ck"><input type="checkbox" id="c2"><span>Send the WhatsApp message to <b>3–4 agencies</b> and compare quotes. Or book the flights yourself: <b>IndiGo Mumbai → Phuket 15 Jan</b> and <b>Bangkok → Mumbai 23 Jan</b>, using the same names as on your passports.</span></label>
-      <label class="ck"><input type="checkbox" id="c3"><span>Book <b>Krabi → Bangkok</b> (Thai AirAsia, 20 Jan, 4:45 pm) with one checked bag.</span></label>
+      <label class="ck"><input type="checkbox" id="c2"><span>Pick a plan together, then book <b>Mumbai → Phuket on 15 Jan</b> and the flight home, using the same names as on your passports.</span></label>
+      <label class="ck"><input type="checkbox" id="c3"><span>Book the flights or bus between cities for your plan (see "Getting between places"). Add checked bags.</span></label>
     </div>
     <div class="check-group"><h3>By 15 Dec 2026</h3>
       <label class="ck"><input type="checkbox" id="c4"><span>Book all 3 hotels <b>with breakfast</b> and free cancellation. Add "honeymoon" in the special requests.</span></label>
@@ -615,7 +646,7 @@ I&#x27;m looking for budget-friendly options, around ₹1.5–1.8 lakh for both 
     <div class="check-group"><h3>Early January 2027</h3>
       <label class="ck"><input type="checkbox" id="c7"><span>Buy travel insurance for both of you that covers <b>recreational scuba diving</b> and medical care.</span></label>
       <label class="ck"><input type="checkbox" id="c8"><span>Book <b>Discover Scuba Diving</b> at Racha Yai (16 Jan) with a PADI 5-star centre. Check the medical form now and ask for vegetarian lunch.</span></label>
-      <label class="ck"><input type="checkbox" id="c9"><span>Book the <b>Phuket → Ao Nang ferry</b> with hotel pickup (18 Jan). Ayutthaya is by train: buy tickets at the station.</span></label>
+      <label class="ck"><input type="checkbox" id="c9"><span>Book the <b>Phuket → Ao Nang ferry</b> (Plans A, D) or the <b>Chiang Saen car and driver</b> (Plans B, C, D). Ayutthaya is by train: buy tickets at the station.</span></label>
       <label class="ck"><input type="checkbox" id="c11"><span>Get USD cash and keep ≈ 20,000 THB worth ready.</span></label>
     </div>
     <div class="check-group"><h3>12–14 Jan 2027</h3>
@@ -658,14 +689,18 @@ I&#x27;m looking for budget-friendly options, around ₹1.5–1.8 lakh for both 
 
 <section>
   <h2>Photo credits</h2>
-  <p class="small muted">Photos from Wikimedia Commons, cropped and resized. Licences: CC BY, CC BY-SA or public domain.</p>
+  <p class="small muted">Photos from Wikimedia Commons, cropped and resized. Licences: CC BY, CC BY-SA, CC0 or public domain.</p>
   <div class="credits">
     <p>Airport sculpture: <a href="https://commons.wikimedia.org/wiki/File:Churn_milk_ocean_suvarnabhumi.jpg" target="_blank" rel="noopener">photo</a> by Kurun (talk), CC BY-SA 3.0</p>
     <p>Ao Nang Beach: <a href="https://commons.wikimedia.org/wiki/File:Ao_Nang_beach_panorama_3.jpg" target="_blank" rel="noopener">photo</a> by kallerna, CC BY-SA 3.0</p>
     <p>Big Buddha: <a href="https://commons.wikimedia.org/wiki/File:The_Big_Buddha,_Phuket.jpg" target="_blank" rel="noopener">photo</a> by Subhrajyoti07, CC BY-SA 4.0</p>
+    <p>Black House (Baan Dam): <a href="https://commons.wikimedia.org/wiki/File:Muzeum_Baan_Dam,_nazywane_%E2%80%9ECzarnym_Domem%E2%80%9D_w_Chiang_Rai,_Tajlandia.jpg" target="_blank" rel="noopener">photo</a> by Szwendam się, CC BY-SA 4.0</p>
+    <p>Blue Temple: <a href="https://commons.wikimedia.org/wiki/File:Wat_Rong_Suea_Ten_(Blue_Temple,_Chiang_Rai)_%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%A3%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B8%B7%E0%B8%AD%E0%B9%80%E0%B8%95%E0%B9%89%E0%B8%99_(October_2021)_-_img_01.jpg" target="_blank" rel="noopener">photo</a> by Chainwit., CC BY-SA 4.0</p>
     <p>Chatuchak Market: <a href="https://commons.wikimedia.org/wiki/File:Chatuchak_Weekend_Market_2.jpg" target="_blank" rel="noopener">photo</a> by Christophe95, CC BY-SA 4.0</p>
+    <p>Chiang Rai Clock Tower: <a href="https://commons.wikimedia.org/wiki/File:Chiang_Rai_Clock_Tower_2018-05-23.jpg" target="_blank" rel="noopener">photo</a> by Index Librorum Permissorum, CC0</p>
     <p>Discover Scuba: <a href="https://commons.wikimedia.org/wiki/File:Thailand_2016_(413_of_422)_(31551938413).jpg" target="_blank" rel="noopener">photo</a> by Weldon Kennedy from London, UK, CC BY 2.0</p>
     <p>Erawan Shrine: <a href="https://commons.wikimedia.org/wiki/File:Bangkok_ErawanShrine2.jpg" target="_blank" rel="noopener">photo</a> by Mr.Peerapong Prasutr, CC BY-SA 4.0</p>
+    <p>Golden Triangle, Mekong: <a href="https://commons.wikimedia.org/wiki/File:Sop-Ruak_Thailand_Golden-Triangle-02.jpg" target="_blank" rel="noopener">photo</a> by CEphoto, Uwe Aranas, CC BY-SA 3.0</p>
     <p>Grand Palace: <a href="https://commons.wikimedia.org/wiki/File:Wat_Phra_Kaew_by_Ninara_TSP_edit_crop.jpg" target="_blank" rel="noopener">photo</a> by Original image: Ninara from Helsinki, Finland.  Edit: TSP, CC BY 4.0</p>
     <p>Kata Beach: <a href="https://commons.wikimedia.org/wiki/File:Phuket_-_Kata_Beach_001.jpg" target="_blank" rel="noopener">photo</a> by ADwarf, Public domain</p>
     <p>Khon masked dance: <a href="https://commons.wikimedia.org/wiki/File:Actor_Twin_Monkey_The_Masked_Play.jpg" target="_blank" rel="noopener">photo</a> by Saerin, CC BY-SA 3.0</p>
@@ -679,11 +714,14 @@ I&#x27;m looking for budget-friendly options, around ₹1.5–1.8 lakh for both 
     <p>Wat Arun: <a href="https://commons.wikimedia.org/wiki/File:Templo_Wat_Arun,_Bangkok,_Tailandia,_2013-08-22,_DD_37.jpg" target="_blank" rel="noopener">photo</a> by Diego Delso, CC BY-SA 3.0</p>
     <p>Wat Chaiwatthanaram: <a href="https://commons.wikimedia.org/wiki/File:Wat_Chai_Watthanaram_-_Ayutthaya.jpg" target="_blank" rel="noopener">photo</a> by JJ Harrison (https://www.jjharrison.com.au/), CC BY-SA 3.0</p>
     <p>Wat Chalong: <a href="https://commons.wikimedia.org/wiki/File:Phuket_Thailand_Wat-Chalong-01.jpg" target="_blank" rel="noopener">photo</a> by CEphoto, Uwe Aranas, CC BY-SA 4.0</p>
+    <p>Wat Huay Pla Kang: <a href="https://commons.wikimedia.org/wiki/File:Wat_Huay_Pla_Kang_%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%AB%E0%B9%89%E0%B8%A7%E0%B8%A2%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B8%81%E0%B8%B1%E0%B9%89%E0%B8%87_Chiang_Rai_%E0%B9%80%E0%B8%8A%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B8%A3%E0%B8%B2%E0%B8%A2_10.jpg" target="_blank" rel="noopener">photo</a> by Chainwit., CC BY-SA 4.0</p>
     <p>Wat Mahathat, Ayutthaya: <a href="https://commons.wikimedia.org/wiki/File:02d_Wat_Mahathat_(NgnL)-08468.jpg" target="_blank" rel="noopener">photo</a> by No(0)GoodNamesLeft, CC BY-SA 4.0</p>
+    <p>Wat Pa Sak, Chiang Saen: <a href="https://commons.wikimedia.org/wiki/File:Chiang_Saen_-_Wat_Pa_Sak_%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%9B%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B1%E0%B8%81_%E0%B9%80%E0%B8%8A%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B9%81%E0%B8%AA%E0%B8%99_(2021)_-_img_31.jpg" target="_blank" rel="noopener">photo</a> by Chainwit., CC BY 4.0</p>
     <p>Wat Pho: <a href="https://commons.wikimedia.org/wiki/File:Wat_Pho,_Bangkok,_Tailandia,_2013-08-22,_DD_06.jpg" target="_blank" rel="noopener">photo</a> by Diego Delso, CC BY-SA 3.0</p>
     <p>Wat Phra Si Sanphet: <a href="https://commons.wikimedia.org/wiki/File:Three_Chedi(s)_of_Wat_Phra_Si_Sanphet.jpg" target="_blank" rel="noopener">photo</a> by This Photo was taken by Supanut Arunoprayote.
 
 Feel free to use any of, CC BY 4.0</p>
+    <p>White Temple (Wat Rong Khun): <a href="https://commons.wikimedia.org/wiki/File:Chiang_Rai_-_Wat_Rong_Khun_%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%A3%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%82%E0%B8%B8%E0%B9%88%E0%B8%99_(2026)_-_img_11.jpg" target="_blank" rel="noopener">photo</a> by Chainwit., CC BY 4.0</p>
   </div>
 </section>
 <footer>
@@ -721,6 +759,14 @@ Feel free to use any of, CC BY 4.0</p>
     function sel(){ var r=document.createRange(); r.selectNodeContents(pre); var x=getSelection(); x.removeAllRanges(); x.addRange(r); st.textContent='Selected. Press Ctrl+C to copy.'; }
     try{ navigator.clipboard.writeText(t).then(function(){ st.textContent='Copied.'; }, sel); }catch(e){ sel(); }
   });
+})();
+
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.ptab'));
+  function show(id){ var ok=false; tabs.forEach(function(t){ var on=t.getAttribute('aria-controls')===id; ok=ok||on; t.setAttribute('aria-selected',on?'true':'false'); document.getElementById(t.getAttribute('aria-controls')).hidden=!on; }); return ok; }
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ var id=t.getAttribute('aria-controls'); show(id); try{history.replaceState(null,'','#'+id);}catch(e){} }); });
+  function fromHash(){ var h=(location.hash||'').slice(1); if(h && /^plan-[a-d]$/.test(h)) show(h); }
+  fromHash(); window.addEventListener('hashchange',fromHash);
 })();
 </script>
 
